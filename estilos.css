@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -9,7 +13,8 @@ section {
     background: white;
     margin: 40px auto;
     padding: 40px;
-    width: 80%;
+    width: 90%;
+    max-width: 1200px;
     border-radius: 15px;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
@@ -132,7 +137,9 @@ footer {
 .card {
     background: white;
     padding: 30px;
-    width: 280px;
+    width: 100%;
+    max-width: 350px;
+    margin: 20px auto;
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0,0,0,0.08);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -327,7 +334,12 @@ section {
     }
 
     .card {
-        width: 90%;
+        width: 95%;
+        max-width: 100%;
+    }
+
+    body {
+        overflow-x: hidden;
     }
 
     section {
@@ -338,5 +350,4 @@ section {
         width: 100%;
         height: auto;
     }
-
 }
