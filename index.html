@@ -19,52 +19,223 @@
 </header>
 
 <section id="inicio">
-    <h2>Bienvenidos</h2>
-    <p>Ofrecemos baños, cortes y cuidado profesional para tu mascota.</p>
-    <img src="imagenes/perro1.jpeg" alt="Mascota feliz">
-</section>
+    <h2>🐾 Bienvenidos a Naky Spa 🐾</h2>
 
+    <p>
+        En nuestro espacio, cada mascota es tratada como parte de la familia. 
+        Nos apasiona brindar una experiencia única, donde el bienestar, la higiene 
+        y la estética se combinan para resaltar lo mejor de tu compañero peludo.
+    </p>
+
+    <p>
+        Ofrecemos baños especializados, cortes profesionales y cuidado integral, 
+        utilizando productos de alta calidad y técnicas seguras que garantizan 
+        comodidad y tranquilidad en cada visita.
+    </p>
+
+    <p>
+        Aquí no solo embellecemos, también cuidamos, protegemos y consentimos. 
+        Porque sabemos que tu mascota merece lo mejor, trabajamos con dedicación, 
+        paciencia y cariño en cada detalle.
+    </p>
+
+    <p class="frase-final">
+        ✨ Confía en nosotros para mantener a tu mejor amigo limpio, feliz y saludable. ✨
+    </p>
+
+    <img src="imagenes/perro5.jpeg" alt="Mascota feliz">
+    <img src="imagenes/perro2.jpeg" alt="Mascota feliz">
+    <img src="imagenes/perro3.jpeg" alt="Mascota feliz">
+    <img src="imagenes/perro4.jpeg" alt="Mascota feliz">
+</section>
 <section id="servicios">
-    <h2>Servicios</h2>
-    <ul>
-        <li>DESPARASITANTE INTERNO Y EXTERNO</li>
-        <li>CORTE DE UÑAS</li>
-        <li>BAÑO MEDICADO</li>
-        <li>BAÑO INSECTICIDA</li>
-        <li>BAÑO DESODORANTE</li>
-    </ul>
+    <h2>Nuestros Servicios</h2>
+
+    <div class="contenedor-servicios">
+
+        <div class="servicio">
+            <div class="icono">💊</div>
+            <h3>Desparasitación</h3>
+            <p>Tratamiento interno y externo para proteger a tu mascota.</p>
+        </div>
+
+        <div class="servicio">
+            <div class="icono">✂️</div>
+            <h3>Corte de Uñas</h3>
+            <p>Corte seguro y profesional para mayor comodidad.</p>
+        </div>
+
+        <div class="servicio">
+            <div class="icono">🛁</div>
+            <h3>Baño Medicado</h3>
+            <p>Ideal para pieles sensibles o con tratamiento dermatológico.</p>
+        </div>
+
+        <div class="servicio">
+            <div class="icono">🐜</div>
+            <h3>Baño Insecticida</h3>
+            <p>Eliminación de pulgas y garrapatas con productos seguros.</p>
+        </div>
+
+        <div class="servicio">
+            <div class="icono">🌸</div>
+            <h3>Baño Desodorante</h3>
+            <p>Limpieza profunda con aroma fresco y duradero.</p>
+        </div>
+
+    </div>
 </section>
 
 <section id="precios">
-    <h2>Precios</h2>
-    <p>Baño básico: $30.000</p>
-    <p>Baño + corte: $50.000</p>
-    <p>Baño medicado: $60.000</p>
+    <h2>Nuestros Precios</h2>
+
+    <div class="contenedor-precios">
+
+        <div class="card">
+            <h3>Baño Básico</h3>
+            <p class="precio">$30.000</p>
+            <ul>
+                <li>Baño desodorante</li>
+                <li>Corte de uñas</li>
+                <li>Limpieza de oídos</li>
+            </ul>
+            <button onclick="agregarCarrito('Baño Básico', 30000)" class="btn-carrito">
+                Agregar al carrito
+            </button>
+        </div>
+
+        <div class="card destacado">
+            <h3>Baño + Corte</h3>
+            <p class="precio">$50.000</p>
+            <ul>
+                <li>Baño premium</li>
+                <li>Corte profesional</li>
+                <li>Perfume especial</li>
+            </ul>
+            <button onclick="agregarCarrito('Baño y Corte', 50000)" class="btn-carrito">
+                Agregar al carrito
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>Baño Medicado</h3>
+            <p class="precio">$60.000</p>
+            <ul>
+                <li>Tratamiento especial</li>
+                <li>Shampoo medicado</li>
+                <li>Revisión de piel</li>
+            </ul>
+            <button onclick="agregarCarrito('Baño Medicado', 60000)" class="btn-carrito">
+                Agregar al carrito
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<section id="carrito">
+    <h2>🛒 Carrito de Servicios</h2>
+    <div class="datos-cliente">
+    <input type="text" id="nombreCliente" placeholder="Tu nombre" required>
+    <input type="tel" id="telefonoCliente" placeholder="Tu teléfono" required>
+    <input type="date" id="fechaCliente" required>
+    <input type="time" id="horaCliente" required>
+</div>
+    <ul id="lista-carrito"></ul>
+    <h3>Total: $<span id="total">0</span></h3>
+    <button onclick="enviarWhatsApp()" class="btn">
+        Enviar pedido por WhatsApp
+    </button>
 </section>
 
 <section id="galeria">
     <h2>Galería</h2>
     <img src="imagenes/bano1.jpeg" alt="Bano mascota">
     <img src="imagenes/corte1.jpeg" alt="Corte mascota">
-</section>
-
-<section id="contacto">
-    <h2>Contacto</h2>
-    <form>
-        <input type="text" placeholder="Tu nombre" required>
-        <input type="email" placeholder="Tu correo" required>
-        <textarea placeholder="Escribe tu mensaje"></textarea>
-        <button type="submit">Enviar</button>
-    </form>
-
-    <a class="whatsapp" href="https://wa.me/573204644455" target="_blank">
-        Escríbenos por WhatsApp
-    </a>
+    <img src="imagenes/corte2.jpeg" alt="Corte mascota">
+    <img src="imagenes/corte4.jpeg" alt="Corte mascota">
+    <img src="imagenes/corte5.jpeg" alt="Corte mascota">
+    <img src="imagenes/corte6.jpeg" alt="Corte mascota">
+    <img src="imagenes/corte7.jpeg" alt="Corte mascota">
+    <img src="imagenes/corte9.jpeg" alt="Corte mascota">
 </section>
 
 <footer>
     <p>© 2026 Baños para Mascotas</p>
 </footer>
+<script>
 
-</body>
-</html>
+let carrito = [];
+let total = 0;
+
+function agregarCarrito(servicio, precio) {
+    carrito.push({servicio, precio});
+    total += precio;
+    actualizarCarrito();
+}
+
+function actualizarCarrito() {
+    const lista = document.getElementById("lista-carrito");
+    lista.innerHTML = "";
+
+    carrito.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `
+            ${item.servicio} - $${item.precio.toLocaleString("es-CO")}
+            <button onclick="eliminarItem(${index})">❌</button>
+        `;
+        lista.appendChild(li);
+    });
+
+    document.getElementById("total").innerText = total.toLocaleString("es-CO");
+}
+
+function eliminarItem(index) {
+    total -= carrito[index].precio;
+    carrito.splice(index, 1);
+    actualizarCarrito();
+}
+
+function enviarWhatsApp() {
+
+    if (carrito.length === 0) {
+        alert("Tu carrito está vacío 🛒");
+        return;
+    }
+
+    const nombre = document.getElementById("nombreCliente").value;
+    const telefono = document.getElementById("telefonoCliente").value;
+    const fecha = document.getElementById("fechaCliente").value;
+    const hora = document.getElementById("horaCliente").value;
+
+    if (!nombre || !telefono || !fecha || !hora) {
+        alert("Por favor completa todos los datos 📋");
+        return;
+    }
+
+ let mensaje = `
+ NUEVA RESERVA - NAKY SPA 
+
+Nombre: ${nombre}
+Telefono: ${telefono}
+Fecha: ${fecha}
+Hora: ${hora}
+
+Servicios solicitados:
+`;
+    carrito.forEach(item => {
+        mensaje += `- ${item.servicio} — $${item.precio.toLocaleString("es-CO")}\n`;
+    });
+
+    mensaje += `
+💰 Total: $${total.toLocaleString("es-CO")}
+
+✨ Gracias por confiar en Naky Spa ✨
+`;
+
+    const mensajeCodificado = encodeURIComponent(mensaje);
+
+    window.open(`https://wa.me/573204644455?text=${mensajeCodificado}`, "_blank");
+}
+
+</script>
