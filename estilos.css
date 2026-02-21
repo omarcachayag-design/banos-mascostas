@@ -1,242 +1,376 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Naky Spa </title>
-    <link rel="stylesheet" href="estilos.css">
-</head>
-<body>
-
-<header>
-    <h1>Baños y Cortes Naky Spa Caninos y Felinos 🐱🐶</h1>
-    <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#servicios">Servicios</a>
-        <a href="#precios">Precios</a>
-        <a href="#galeria">Galería</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
-</header>
-
-<section id="inicio">
-    <h2>🐾 Bienvenidos a Naky Spa 🐾</h2>
-
-    <p>
-        En nuestro espacio, cada mascota es tratada como parte de la familia. 
-        Nos apasiona brindar una experiencia única, donde el bienestar, la higiene 
-        y la estética se combinan para resaltar lo mejor de tu compañero peludo.
-    </p>
-
-    <p>
-        Ofrecemos baños especializados, cortes profesionales y cuidado integral, 
-        utilizando productos de alta calidad y técnicas seguras que garantizan 
-        comodidad y tranquilidad en cada visita.
-    </p>
-
-    <p>
-        Aquí no solo embellecemos, también cuidamos, protegemos y consentimos. 
-        Porque sabemos que tu mascota merece lo mejor, trabajamos con dedicación, 
-        paciencia y cariño en cada detalle.
-    </p>
-
-    <p class="frase-final">
-        ✨ Confía en nosotros para mantener a tu mejor amigo limpio, feliz y saludable. ✨
-    </p>
-
-    <img src="imagenes/perro5.jpeg" alt="Mascota feliz">
-    <img src="imagenes/perro2.jpeg" alt="Mascota feliz">
-    <img src="imagenes/perro3.jpeg" alt="Mascota feliz">
-    <img src="imagenes/perro4.jpeg" alt="Mascota feliz">
-</section>
-<section id="servicios">
-    <h2>Nuestros Servicios</h2>
-
-    <div class="contenedor-servicios">
-
-        <div class="servicio">
-            <div class="icono">💊</div>
-            <h3>Desparasitación</h3>
-            <p>Tratamiento interno y externo para proteger a tu mascota.</p>
-        </div>
-
-        <div class="servicio">
-            <div class="icono">✂️</div>
-            <h3>Corte de Uñas</h3>
-            <p>Corte seguro y profesional para mayor comodidad.</p>
-        </div>
-
-        <div class="servicio">
-            <div class="icono">🛁</div>
-            <h3>Baño Medicado</h3>
-            <p>Ideal para pieles sensibles o con tratamiento dermatológico.</p>
-        </div>
-
-        <div class="servicio">
-            <div class="icono">🐜</div>
-            <h3>Baño Insecticida</h3>
-            <p>Eliminación de pulgas y garrapatas con productos seguros.</p>
-        </div>
-
-        <div class="servicio">
-            <div class="icono">🌸</div>
-            <h3>Baño Desodorante</h3>
-            <p>Limpieza profunda con aroma fresco y duradero.</p>
-        </div>
-
-    </div>
-</section>
-
-<section id="precios">
-    <h2>Nuestros Precios</h2>
-
-    <div class="contenedor-precios">
-
-        <div class="card">
-            <h3>Baño Básico</h3>
-            <p class="precio">$30.000</p>
-            <ul>
-                <li>Baño desodorante</li>
-                <li>Corte de uñas</li>
-                <li>Limpieza de oídos</li>
-            </ul>
-            <button onclick="agregarCarrito('Baño Básico', 30000)" class="btn-carrito">
-                Agregar al carrito
-            </button>
-        </div>
-
-        <div class="card destacado">
-            <h3>Baño + Corte</h3>
-            <p class="precio">$50.000</p>
-            <ul>
-                <li>Baño premium</li>
-                <li>Corte profesional</li>
-                <li>Perfume especial</li>
-            </ul>
-            <button onclick="agregarCarrito('Baño y Corte', 50000)" class="btn-carrito">
-                Agregar al carrito
-            </button>
-        </div>
-
-        <div class="card">
-            <h3>Baño Medicado</h3>
-            <p class="precio">$60.000</p>
-            <ul>
-                <li>Tratamiento especial</li>
-                <li>Shampoo medicado</li>
-                <li>Revisión de piel</li>
-            </ul>
-            <button onclick="agregarCarrito('Baño Medicado', 60000)" class="btn-carrito">
-                Agregar al carrito
-            </button>
-        </div>
-
-    </div>
-</section>
-
-<section id="carrito">
-    <h2>🛒 Agenda tu cita</h2>
-    <div class="datos-cliente">
-    <input type="date" id="fecha" placeholder="Fecha">
-    <input type="time" id="hora" placeholder="Hora">
-    <input type="date" id="fechaCliente" required>
-    <input type="time" id="horaCliente" required>
-</div>
-    <ul id="lista-carrito"></ul>
-    <h3>Total: $<span id="total">0</span></h3>
-    <button onclick="enviarWhatsApp()" class="btn">
-        Enviar pedido por WhatsApp
-    </button>
-</section>
-
-<section id="galeria">
-    <h2>Galería</h2>
-    <img src="imagenes/bano1.jpeg" alt="Bano mascota">
-    <img src="imagenes/corte1.jpeg" alt="Corte mascota">
-    <img src="imagenes/corte2.jpeg" alt="Corte mascota">
-    <img src="imagenes/corte4.jpeg" alt="Corte mascota">
-    <img src="imagenes/corte5.jpeg" alt="Corte mascota">
-    <img src="imagenes/corte6.jpeg" alt="Corte mascota">
-    <img src="imagenes/corte7.jpeg" alt="Corte mascota">
-    <img src="imagenes/corte9.jpeg" alt="Corte mascota">
-</section>
-
-<footer>
-    <p>© 2026 Baños para Mascotas</p>
-</footer>
-<script>
-
-let carrito = [];
-let total = 0;
-
-function agregarCarrito(servicio, precio) {
-    carrito.push({servicio, precio});
-    total += precio;
-    actualizarCarrito();
+* {
+    box-sizing: border-box;
 }
 
-function actualizarCarrito() {
-    const lista = document.getElementById("lista-carrito");
-    lista.innerHTML = "";
-
-    carrito.forEach((item, index) => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-            ${item.servicio} - $${item.precio.toLocaleString("es-CO")}
-            <button onclick="eliminarItem(${index})">❌</button>
-        `;
-        lista.appendChild(li);
-    });
-
-    document.getElementById("total").innerText = total.toLocaleString("es-CO");
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ffc0cb, #35e5e7);
 }
 
-function eliminarItem(index) {
-    total -= carrito[index].precio;
-    carrito.splice(index, 1);
-    actualizarCarrito();
+/* Contenedor general */
+section {
+    background: white;
+    margin: 40px auto;
+    padding: 40px;
+    width: 90%;
+    max-width: 1200px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-function enviarWhatsApp() {
+/* Header */
+header {
+    background: #00e6a8;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
 
-    if (carrito.length === 0) {
-        alert("Tu carrito está vacío 🛒");
-        return;
+nav {
+    margin-top: 15px;
+}
+
+nav a {
+    margin: 0 15px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+/* Títulos */
+h1 {
+    margin: 0;
+}
+
+h2 {
+    color: #060606;
+}
+
+/* Imágenes */
+img {
+    width: 250px;
+    margin: 10px;
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+/* Lista */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+#lista-carrito li {
+    background: #f4f4f4;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+/* Botones */
+button {
+    padding: 12px 25px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #388E3C;
+}
+
+/* Formulario */
+input, textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* WhatsApp */
+.whatsapp {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 25px;
+    background-color: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: bold;
+}
+
+.whatsapp:hover {
+    background-color: #1ebe5d;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: white;
+}#precios {
+    text-align: center;
+    padding: 50px 20px;
+    background: #f8f8f8;
+}
+
+.contenedor-precios {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    width: 100%;
+    max-width: 350px;
+    margin: 20px auto;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.precio {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e91e63;
+    margin: 15px 0;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.card ul li {
+    margin: 8px 0;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: background 0.3s ease;
+}
+
+.btn:hover {
+    background: #1ebe5d;
+}
+
+.destacado {
+    border: 3px solid #e91e63;
+    transform: scale(1.05);
+}
+#servicios {
+    padding: 50px 20px;
+    text-align: center;
+    background: #ffffff;
+}
+
+.contenedor-servicios {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.servicio {
+    background: #ffffff;
+    width: 250px;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+}
+
+.servicio:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+}
+
+.icono {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.servicio h3 {
+    margin-bottom: 10px;
+}
+
+.servicio p {
+    font-size: 14px;
+    color: #444;
+}
+#carrito {
+    padding: 40px;
+    text-align: center;
+    background: #f3f3f3;
+}
+
+#lista-carrito {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+#lista-carrito li {
+    margin: 10px 0;
+}
+
+.btn-carrito {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #e91e63;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.btn-carrito:hover {
+    background: #c2185b;
+}
+.datos-cliente {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 300px;
+    margin: 20px auto;
+}
+.datos-cliente input {
+    width: 100%;
+    max-width: 350px;
+    padding: 12px;
+    margin: 10px auto;
+    display: block;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #fff;
+}
+/* ================= FONDO ANIMADO ================= */
+
+.fondo-animado {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.fondo-animado span {
+    position: absolute;
+    font-size: 60px;
+    opacity: 0.07;
+    animation: flotar 25s linear infinite;
+}
+
+.fondo-animado span:nth-child(1) { left: 10%; animation-duration: 30s; }
+.fondo-animado span:nth-child(2) { left: 30%; animation-duration: 20s; }
+.fondo-animado span:nth-child(3) { left: 50%; animation-duration: 28s; }
+.fondo-animado span:nth-child(4) { left: 70%; animation-duration: 35s; }
+.fondo-animado span:nth-child(5) { left: 85%; animation-duration: 22s; }
+
+@keyframes flotar {
+    0% {
+        top: 100%;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: -10%;
+        transform: rotate(360deg);
+    }
+}
+section {
+    position: relative;
+    z-index: 2;
+}
+/* RESPONSIVE MOVIL */
+@media (max-width: 768px) {
+
+    header h1 {
+        font-size: 20px;
+        text-align: center;
     }
 
-    const nombre = document.getElementById("nombreCliente").value;
-    const telefono = document.getElementById("telefonoCliente").value;
-    const fecha = document.getElementById("fechaCliente").value;
-    const hora = document.getElementById("horaCliente").value;
-
-    if (!nombre || !telefono || !fecha || !hora) {
-        alert("Por favor completa todos los datos 📋");
-        return;
+    nav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
     }
 
- let mensaje = `
- NUEVA RESERVA - NAKY SPA 
+    .contenedor-precios,
+    .contenedor-servicios {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 
-Nombre: ${nombre}
-Telefono: ${telefono}
-Fecha: ${fecha}
-Hora: ${hora}
+    .card {
+        width: 95%;
+        max-width: 100%;
+    }
 
-Servicios solicitados:
-`;
-    carrito.forEach(item => {
-        mensaje += `- ${item.servicio} — $${item.precio.toLocaleString("es-CO")}\n`;
-    });
+    body {
+        overflow-x: hidden;
+    }
 
-    mensaje += `
-💰 Total: $${total.toLocaleString("es-CO")}
+    section {
+        padding: 30px 15px;
+    }
 
-✨ Gracias por confiar en Naky Spa ✨
-`;
-
-    const mensajeCodificado = encodeURIComponent(mensaje);
-
-    window.open(`https://wa.me/573204644455?text=${mensajeCodificado}`, "_blank");
+    img {
+        width: 100%;
+        height: auto;
+    }
+}
+#agenda {
+    text-align: center;
 }
 
-</script>
+.datos-cliente {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 400px;
+    margin: 20px auto;
+}
+
+.datos-cliente input {
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+}
