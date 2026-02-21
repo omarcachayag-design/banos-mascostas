@@ -139,8 +139,13 @@
     <div class="datos-cliente">
     <input type="text" id="nombreCliente" placeholder="Tu nombre" required>
     <input type="tel" id="telefonoCliente" placeholder="Tu teléfono" required>
-    <input type="date" id="fechaCliente" required>
-    <input type="time" id="horaCliente" required>
+    <input type="text" id="fechaCliente" placeholder="Fecha" 
+       onfocus="this.type='date'" 
+       onblur="if(!this.value)this.type='text'" required>
+
+<input type="text" id="horaCliente" placeholder="Hora" 
+       onfocus="this.type='time'" 
+       onblur="if(!this.value)this.type='text'" required>
 </div>
     <ul id="lista-carrito"></ul>
     <h3>Total: $<span id="total">0</span></h3>
