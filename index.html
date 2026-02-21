@@ -15,7 +15,6 @@
         <a href="#servicios">Servicios</a>
         <a href="#precios">Precios</a>
         <a href="#galeria">Galería</a>
-        <a href="#contacto">Contacto</a>
     </nav>
 </header>
 
@@ -146,6 +145,30 @@
 <input type="text" id="horaCliente" placeholder="Hora" 
        onfocus="this.type='time'" 
        onblur="if(!this.value)this.type='text'" required>
+<select id="tipoMascota" onchange="actualizarTamano()" required>
+    <option value="">Selecciona tu mascota</option>
+    <option value="Perro">Perro 🐶</option>
+    <option value="Gato">Gato 🐱</option>
+</select>
+<input type="text" id="raza" placeholder="🐾 Raza (Ej: Poodle, Criollo, Siamés)">
+<select id="tamano">
+    <option value="">🐶 Tamaño de la mascota</option>
+    <option value="Pequeño">Pequeño</option>
+    <option value="Mediano">Mediano</option>
+    <option value="Grande">Grande</option>
+</select>
+
+<select id="nervioso">
+    <option value="">🐱 ¿Es nervioso?</option>
+    <option value="Sí">Sí</option>
+    <option value="No">No</option>
+</select>
+
+<select id="primeraVisita">
+    <option value="">📅 ¿Es primera visita?</option>
+    <option value="Sí">Sí</option>
+    <option value="No">No</option>
+</select>       
 </div>
     <ul id="lista-carrito"></ul>
     <h3>Total: $<span id="total">0</span></h3>
@@ -201,6 +224,31 @@ function eliminarItem(index) {
     carrito.splice(index, 1);
     actualizarCarrito();
 }
+function actualizarTamano() {
+    const mascota = document.getElementById("tipoMascota").value;
+    const selectTamano = document.getElementById("tamano");
+
+    selectTamano.innerHTML = "";
+
+    if (mascota === "Perro") {
+        selectTamano.innerHTML = `
+            <option value="">🐶 Tamaño del perro</option>
+            <option value="Pequeño">Pequeño</option>
+            <option value="Mediano">Mediano</option>
+            <option value="Grande">Grande</option>
+        `;
+    } else if (mascota === "Gato") {
+        selectTamano.innerHTML = `
+            <option value="">🐱 Tamaño del gato</option>
+            <option value="Pequeño">Pequeño</option>
+            <option value="Mediano">Mediano</option>
+        `;
+    } else {
+        selectTamano.innerHTML = `
+            <option value="">🐾 Tamaño de la mascota</option>
+        `;
+    }
+}
 
 function enviarWhatsApp() {
 
@@ -213,6 +261,11 @@ function enviarWhatsApp() {
     const telefono = document.getElementById("telefonoCliente").value;
     const fecha = document.getElementById("fechaCliente").value;
     const hora = document.getElementById("horaCliente").value;
+    const mascota = document.getElementById("tipoMascota").value;
+    const raza = document.getElementById("raza").value;
+    const tamano = document.getElementById("tamano").value;
+    const nervioso = document.getElementById("nervioso").value;
+    const primeraVisita = document.getElementById("primeraVisita").value;
 
     if (!nombre || !telefono || !fecha || !hora) {
         alert("Por favor completa todos los datos 📋");
@@ -220,12 +273,18 @@ function enviarWhatsApp() {
     }
 
  let mensaje = `
- NUEVA RESERVA - NAKY SPA 
+NUEVA RESERVA - NAKY SPA
 
 Nombre: ${nombre}
 Telefono: ${telefono}
 Fecha: ${fecha}
 Hora: ${hora}
+
+Tipo de mascota: ${mascota}
+Raza: ${raza}
+Tamaño: ${tamano}
+¿Es nervioso?: ${nervioso}
+¿Primera visita?: ${primeraVisita}
 
 Servicios solicitados:
 `;
