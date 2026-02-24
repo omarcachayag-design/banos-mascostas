@@ -1145,3 +1145,11 @@ img {
     max-width: 100%;
     border-radius: 15px;
 }
+.footer-contacto a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.footer-contacto a:hover {
+    color: #61e0e4;
+}
