@@ -60,6 +60,22 @@ body.light-mode .glass-hover:hover {
     background: rgba(15, 23, 42, 0.05);
 }
 
+
+body.light-mode .btn-outline,
+body.light-mode .form-group input,
+body.light-mode .form-group select,
+body.light-mode nav a:hover,
+body.light-mode nav a.active,
+body.light-mode .menu-toggle {
+    color: var(--text-main) !important;
+}
+
+body.light-mode .hero-titulo,
+body.light-mode .seccion-header h2,
+body.light-mode .price-value {
+    color: var(--text-main);
+}
+
 /* Theme Toggle Button */
 .theme-toggle {
     background: var(--grad-glass);
@@ -792,3 +808,4 @@ footer {
         /* Too narrow for side-by-side */
     }
 }
+
