@@ -637,7 +637,7 @@ nav a.active {
     display: flex;
     align-items: center;
     gap: 1rem;
-    color: var(--white);
+    color: var(--text-main);
     transform: translateX(120%);
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
@@ -877,3 +877,4 @@ footer {
         /* Too narrow for side-by-side */
     }
 }
+
