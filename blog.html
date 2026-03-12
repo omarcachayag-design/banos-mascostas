@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Naky Spa | Cuidado y Bienestar Animal</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <!-- Fondos Animados -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    <div id="emoji-container"></div>
+    <div id="notif-container" class="notif-container"></div>
+
+
+    <!-- Header Glass -->
+    <header class="glass">
+        <div class="header-contenido">
+            <div class="logo">
+                <span class="logo-icon">🐾</span>
+                <span class="logo-texto">Naky Spa</span>
+            </div>
+            <nav>
+                <button class="theme-toggle" id="theme-toggle" title="Cambiar modo">🌓</button>
+                <a href="index.html#inicio">Inicio</a>
+                <a href="index.html#proceso">Cómo funciona</a>
+                <a href="index.html#servicios">Servicios</a>
+                <a href="index.html#precios">Precios</a>
+                <a href="index.html#galeria">Galería</a>
+                <a href="blog.html" class="active">Blog</a>
+                <a href="index.html#carrito" class="btn-nav">Reservar</a>
+            </nav>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION BLOG -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid" style="grid-template-columns: 1fr;">
+                    <div class="hero-text" data-aos="fade-up"
+                        style="text-align: center; max-width: 800px; margin: 0 auto;">
+                        <span class="hero-badge">🐾 Artículos y Consejos</span>
+                        <h1 class="hero-titulo">Blog de <span class="texto-destacado">cuidado y bienestar</span> para
+                            mascotas</h1>
+                        <p class="hero-descripcion">
+                            Descubre los mejores tips para que tu peludo siempre esté sano, feliz y reluciente.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BLOG CONTENT -->
+        <section id="articulos">
+            <div class="container">
+                <div class="services-grid">
+                    <!-- Post 1 -->
+                    <div class="service-card glass glass-hover">
+                        <div style="height: 200px; overflow: hidden; border-radius: 15px; margin-bottom: 1.5rem;">
+                            <img src="imagenes/corte4.jpeg" alt="Cuidado del pelaje"
+                                style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <span class="hero-badge" style="font-size: 0.7rem;">Estética</span>
+                        <h3 style="margin: 1rem 0;">Beneficios de la peluquería profesional para tu mascota</h3>
+                        <p>Aprende por qué cepillar a tu mascota diariamente previene nudos y mejora la circulación de
+                            su piel.</p>
+                        <a href="#" class="btn-outline" style="margin-top: 1rem; display: inline-block;">Leer más</a>
+                    </div>
+
+                    <!-- Post 2 -->
+                    <div class="service-card glass glass-hover">
+                        <div style="height: 200px; overflow: hidden; border-radius: 15px; margin-bottom: 1.5rem;">
+                            <img src="imagenes/perro5.jpeg" alt="Bienestar"
+                                style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <span class="hero-badge" style="font-size: 0.7rem;">Salud</span>
+                        <h3 style="margin: 1rem 0;">Tips para reducir el estrés en el baño</h3>
+                        <p>Convertir el baño en una experiencia positiva es clave para la salud mental de tu perro o
+                            gato.</p>
+                        <a href="#" class="btn-outline" style="margin-top: 1rem; display: inline-block;">Leer más</a>
+                    </div>
+
+                    <!-- Post 3 -->
+                    <div class="service-card glass glass-hover">
+                        <div style="height: 200px; overflow: hidden; border-radius: 15px; margin-bottom: 1.5rem;">
+                            <img src="imagenes/corte7.jpeg" alt="Alimentación"
+                                style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                        <span class="hero-badge" style="font-size: 0.7rem;">Nutrición</span>
+                        <h3 style="margin: 1rem 0;">Dieta y pelaje: La conexión</h3>
+                        <p>¿Sabías que la alimentación influye directamente en el brillo y la suavidad del pelo de tu
+                            mascota?</p>
+                        <a href="#" class="btn-outline" style="margin-top: 1rem; display: inline-block;">Leer más</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="logo" style="margin-bottom: 1rem">
+                        <span class="logo-icon">🐾</span>
+                        <span class="logo-texto">Naky Spa</span>
+                    </div>
+                    <p style="color: var(--text-muted)">Cuidado premium en el corazón de Neiva. Pasión por el bienestar
+                        animal.</p>
+                </div>
+                <div>
+                    <h4>Contacto</h4>
+                    <p>📱 320 464 4455</p>
+                    <p>📍 Neiva-Huila, Colombia</p>
+                </div>
+                <div>
+                    <h4>Horario</h4>
+                    <p>Lunes - Sábado</p>
+                    <p>8:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Naky Spa - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Management
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+            if (currentTheme === 'light-mode') {
+                themeToggle.innerText = '🌙';
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            let theme = 'dark-mode';
+            if (body.classList.contains('light-mode')) {
+                theme = 'light-mode';
+                themeToggle.innerText = '🌙';
+            } else {
+                themeToggle.innerText = '🌓';
+            }
+            localStorage.setItem('theme', theme);
+        });
+
+        // Floating Emojis Logic
+        const emojiContainer = document.getElementById('emoji-container');
+        const emojis = ['🐶', '🐱', '🐾', '✨', '🛁'];
+
+        function createFloatingEmoji() {
+            const emoji = document.createElement('div');
+            emoji.className = 'floating-emoji';
+            emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + 'vw';
+            const size = 1.5 + Math.random() * 2;
+            emoji.style.fontSize = size + 'rem';
+            const duration = 8 + Math.random() * 4;
+            emoji.style.animationDuration = duration + 's';
+            emojiContainer.appendChild(emoji);
+            setTimeout(() => { emoji.remove(); }, duration * 1000);
+        }
+        setInterval(createFloatingEmoji, 800);
+
+        function toggleMenu() {
+            const nav = document.querySelector('header nav');
+            nav.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const nav = document.querySelector('header nav');
+            nav.classList.remove('active');
+        }
+
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) header.classList.add('scrolled');
+            else header.classList.remove('scrolled');
+        });
+    </script>
+</body>
+
+</html>
