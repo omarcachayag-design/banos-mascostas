@@ -310,6 +310,7 @@ header.scrolled {
 .logo-texto {
     background: var(--grad-primary);
     -webkit-background-clip: text;
+     background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -808,4 +809,5 @@ footer {
         /* Too narrow for side-by-side */
     }
 }
+
 
