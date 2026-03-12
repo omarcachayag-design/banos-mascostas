@@ -18,6 +18,7 @@
     <div id="emoji-container"></div>
     <div id="notif-container" class="notif-container"></div>
 
+
     <!-- Header Glass -->
     <header class="glass">
         <div class="header-contenido">
@@ -409,8 +410,31 @@
             total += precio;
             actualizarCarrito();
             
-            // Scroll suave hasta el resumen
-            document.getElementById('carrito').scrollIntoView({ behavior: 'smooth' });
+            // Mostrar notificación
+            mostrarNotificacion(`¡${servicio} seleccionado!`);
+
+            // Scroll suave hasta el resumen específico
+            document.getElementById('resumen-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        function mostrarNotificacion(mensaje) {
+            const container = document.getElementById('notif-container');
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `
+                <span class="toast-icon">✨</span>
+                <span class="toast-text">${mensaje}</span>
+            `;
+            container.appendChild(toast);
+
+            // Activar animación
+            setTimeout(() => toast.classList.add('active'), 10);
+
+            // Eliminar después de 3 segundos
+            setTimeout(() => {
+                toast.classList.remove('active');
+                setTimeout(() => toast.remove(), 500);
+            }, 3000);
         }
 
         function actualizarCarrito() {
@@ -475,5 +499,3 @@
 </body>
 
 </html>
-
-
