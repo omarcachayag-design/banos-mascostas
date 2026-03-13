@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salud y Bienestar - Naky Spa</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <!-- Fondos Animados -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    <div id="emoji-container"></div>
+    <div id="notif-container" class="notif-container"></div>
+
+
+    <!-- Header Glass -->
+    <header class="glass">
+        <div class="header-contenido">
+            <div class="logo">
+                <img src="imagenes/logo_transparent.png" alt="Naky Spa Logo" class="logo-img">
+                <span class="logo-texto">Naky Spa</span>
+            </div>
+            <nav>
+                <button class="theme-toggle" id="theme-toggle" title="Cambiar modo">🌓</button>
+                <a href="index.html#inicio">Inicio</a>
+                <a href="index.html#proceso">Cómo funciona</a>
+                <a href="index.html#servicios">Servicios</a>
+                <a href="index.html#precios">Precios</a>
+                <a href="index.html#galeria">Galería</a>
+                <a href="blog.html">Blog</a>
+                <a href="index.html#carrito" class="btn-nav">Reservar</a>
+            </nav>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION POST -->
+        <section class="hero hero-blog">
+            <div class="container">
+                <div class="hero-grid" style="grid-template-columns: 1fr;">
+                    <div class="hero-text" data-aos="fade-up" style="text-align: center; max-width: 900px; margin: 0 auto;">
+                        <span class="hero-badge">🐾 Salud de la Piel</span>
+                        <h1 class="hero-titulo">5 razones por las que tu perro <span class="texto-destacado">se rasca mucho</span> (y no siempre son pulgas)</h1>
+                        <p class="hero-descripcion">
+                            La picazón constante puede ser signo de diversas condiciones que requieren nuestra atención.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- POST CONTENT -->
+        <section id="contenido-post" style="padding-top: 0;">
+            <div class="container">
+                <div class="form-glass glass" style="max-width: 900px; margin: 0 auto; line-height: 1.8;">
+                    <img src="imagenes/perro5.jpeg" alt="Perro rascándose" style="width: 100%; border-radius: 20px; margin-bottom: 2rem; border: 1px solid var(--glass-border);">
+                    
+                    <h2 style="margin-bottom: 1.5rem; color: var(--secondary);">Entendiendo la picazón de tu mascota</h2>
+                    <p style="margin-bottom: 1.5rem;">
+                        Ver a nuestro peludo rascándose sin parar es preocupante. Aunque lo primero que pensamos es en pulgas, existen muchas otras razones por las que la piel de tu perro puede estar irritada. Aquí te explicamos las más comunes que vemos en Naky Spa.
+                    </p>
+
+                    <div style="margin: 2rem 0;">
+                        <div class="service-card glass" style="margin-bottom: 1.5rem;">
+                            <h3>1. Alergias Ambientales 🌸</h3>
+                            <p>Al igual que los humanos, los perros pueden ser alérgicos al polen, moho o polvo. Esto causa picazón intensa, especialmente en patas y orejas.</p>
+                        </div>
+                        <div class="service-card glass" style="margin-bottom: 1.5rem;">
+                            <h3>2. Sensibilidad Alimentaria 🍎</h3>
+                            <p>Ciertos ingredientes en su comida pueden causar reacciones en la piel. Un cambio de dieta suele ser la solución bajo supervisión profesional.</p>
+                        </div>
+                        <div class="service-card glass" style="margin-bottom: 1.5rem;">
+                            <h3>3. Piel Seca (Xerosis) 💨</h3>
+                            <p>El clima seco o el uso de productos de limpieza agresivos pueden resecar su piel. Un baño hidratante en nuestro spa hace maravillas.</p>
+                        </div>
+                        <div class="service-card glass" style="margin-bottom: 1.5rem;">
+                            <h3>4. Estrés o Ansiedad 🧠</h3>
+                            <p>Algunos perros se lamen o rascan compulsivamente cuando están ansiosos. Es un comportamiento que debemos monitorizar.</p>
+                        </div>
+                        <div class="service-card glass">
+                            <h3>5. Infecciones por Hongos o Bacterias 🔍</h3>
+                            <p>Pequeñas heridas que se infectan pueden causar un ciclo de rascado y dolor. Mantener su pelaje limpio y seco es clave.</p>
+                        </div>
+                    </div>
+
+                    <p style="margin-bottom: 2rem;">
+                        En Naky Spa, durante nuestros servicios de peluquería, siempre realizamos una revisión básica de la piel para detectar estas señales a tiempo y recomendarte el mejor camino a seguir.
+                    </p>
+
+                    <div class="btn-group">
+                        <a href="blog.html" class="btn-outline">⬅ Volver al Blog</a>
+                        <a href="index.html#carrito" class="btn-main">📅 Agendar Revisión</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="logo" style="margin-bottom: 1rem">
+                        <span class="logo-icon">🐾</span>
+                        <span class="logo-texto">Naky Spa</span>
+                    </div>
+                    <p style="color: var(--text-muted)">Cuidado premium en el corazón de Neiva. Pasión por el bienestar animal.</p>
+                </div>
+                <div>
+                    <h4>Contacto</h4>
+                    <p>📱 320 464 4455</p>
+                    <p>📍 Neiva-Huila, Colombia</p>
+                </div>
+                <div>
+                    <h4>Horario</h4>
+                    <p>Lunes - Sábado</p>
+                    <p>8:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Naky Spa - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Management
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+            if (currentTheme === 'light-mode') {
+                themeToggle.innerText = '🌙';
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            let theme = 'dark-mode';
+            if (body.classList.contains('light-mode')) {
+                theme = 'light-mode';
+                themeToggle.innerText = '🌙';
+            } else {
+                themeToggle.innerText = '🌓';
+            }
+            localStorage.setItem('theme', theme);
+        });
+
+        // Floating Emojis Logic
+        const emojiContainer = document.getElementById('emoji-container');
+        const emojis = ['🐶', '🐱', '🐾', '✨', '🛁'];
+
+        function createFloatingEmoji() {
+            const emoji = document.createElement('div');
+            emoji.className = 'floating-emoji';
+            emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + 'vw';
+            const size = 1.5 + Math.random() * 2;
+            emoji.style.fontSize = size + 'rem';
+            const duration = 8 + Math.random() * 4;
+            emoji.style.animationDuration = duration + 's';
+            emojiContainer.appendChild(emoji);
+            setTimeout(() => { emoji.remove(); }, duration * 1000);
+        }
+        setInterval(createFloatingEmoji, 800);
+
+        function toggleMenu() {
+            const nav = document.querySelector('header nav');
+            nav.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const nav = document.querySelector('header nav');
+            nav.classList.remove('active');
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Higiene y Baño - Naky Spa</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <!-- Fondos Animados -->
+    <div class="bg-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+    <div id="emoji-container"></div>
+    <div id="notif-container" class="notif-container"></div>
+
+
+    <!-- Header Glass -->
+    <header class="glass">
+        <div class="header-contenido">
+            <div class="logo">
+                <img src="imagenes/logo_transparent.png" alt="Naky Spa Logo" class="logo-img">
+                <span class="logo-texto">Naky Spa</span>
+            </div>
+            <nav>
+                <button class="theme-toggle" id="theme-toggle" title="Cambiar modo">🌓</button>
+                <a href="index.html#inicio">Inicio</a>
+                <a href="index.html#proceso">Cómo funciona</a>
+                <a href="index.html#servicios">Servicios</a>
+                <a href="index.html#precios">Precios</a>
+                <a href="index.html#galeria">Galería</a>
+                <a href="blog.html">Blog</a>
+                <a href="index.html#carrito" class="btn-nav">Reservar</a>
+            </nav>
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Menu">☰</button>
+
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO SECTION POST -->
+        <section class="hero hero-blog">
+            <div class="container">
+                <div class="hero-grid" style="grid-template-columns: 1fr;">
+                    <div class="hero-text" data-aos="fade-up" style="text-align: center; max-width: 900px; margin: 0 auto;">
+                        <span class="hero-badge">🐾 Higiene Canina</span>
+                        <h1 class="hero-titulo">¿Cómo saber si tu perro <span class="texto-destacado">necesita un baño</span> urgente?</h1>
+                        <p class="hero-descripcion">
+                            No esperes a que el olor sea insoportable. Estas señales te dirán cuándo es el momento ideal.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- POST CONTENT -->
+        <section id="contenido-post" style="padding-top: 0;">
+            <div class="container">
+                <div class="form-glass glass" style="max-width: 900px; margin: 0 auto; line-height: 1.8;">
+                    <img src="imagenes/corte7.jpeg" alt="Baño Canino" style="width: 100%; border-radius: 20px; margin-bottom: 2rem; border: 1px solid var(--glass-border);">
+                    
+                    <h2 style="margin-bottom: 1.5rem; color: var(--secondary);">Señales Clave de Suciedad</h2>
+                    <p style="margin-bottom: 1.5rem;">
+                        A veces el barro y el polvo son evidentes, pero otras veces la suciedad se acumula de forma silenciosa. Mantener una rutina de baño es vital no solo para el aroma, sino para evitar nudos imposibles y problemas de piel.
+                    </p>
+
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                        <div class="service-card glass">
+                            <h3>👃 El "Olor a Perro"</h3>
+                            <p>Si el olor natural de tu mascota se vuelve penetrante o rancio, el exceso de sebo y bacterias en su piel necesita una limpieza profunda.</p>
+                        </div>
+                        <div class="service-card glass">
+                            <h3>☁️ Pelaje Opaco</h3>
+                            <p>Un pelo que ha perdido su brillo natural suele estar cubierto de una fina capa de polvo ambiental que bloquea la oxigenación del folículo.</p>
+                        </div>
+                        <div class="service-card glass">
+                            <h3>🧗 Exceso de Rascado</h3>
+                            <p>Muchas veces no son parásitos, sino simple acumulación de suciedad que causa picazón e incomodidad general.</p>
+                        </div>
+                        <div class="service-card glass">
+                            <h3>🪵 Exceso de tierra, lodo o residuos</h3>
+                            <p>Después de jugar en el parque, correr bajo la lluvia o salir a pasear por zonas polvorientas, tu perro puede regresar lleno de tierra, barro o incluso residuos de otros animales.</p>
+                        </div>
+                    </div>
+
+                    <h3 style="margin: 2rem 0 1rem; color: var(--primary-light);">¿Con qué frecuencia bañarlo?</h3>
+                    <p style="margin-bottom: 2rem;">
+                        Depende mucho de la raza y su estilo de vida. Un perro de ciudad que sale poco puede esperar un mes, pero un perro activo que visita parques necesita baños más frecuentes con productos suaves que no dañen su pH.
+                    </p>
+
+                    <div class="btn-group">
+                        <a href="blog.html" class="btn-outline">⬅ Volver al Blog</a>
+                        <a href="index.html#carrito" class="btn-main">📅 Reservar su Spa</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="glass">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="logo" style="margin-bottom: 1rem">
+                        <span class="logo-icon">🐾</span>
+                        <span class="logo-texto">Naky Spa</span>
+                    </div>
+                    <p style="color: var(--text-muted)">Cuidado premium en el corazón de Neiva. Pasión por el bienestar animal.</p>
+                </div>
+                <div>
+                    <h4>Contacto</h4>
+                    <p>📱 320 464 4455</p>
+                    <p>📍 Neiva-Huila, Colombia</p>
+                </div>
+                <div>
+                    <h4>Horario</h4>
+                    <p>Lunes - Sábado</p>
+                    <p>8:00 AM - 6:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Naky Spa - Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Management
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        const currentTheme = localStorage.getItem('theme');
+        if (currentTheme) {
+            body.classList.add(currentTheme);
+            if (currentTheme === 'light-mode') {
+                themeToggle.innerText = '🌙';
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            let theme = 'dark-mode';
+            if (body.classList.contains('light-mode')) {
+                theme = 'light-mode';
+                themeToggle.innerText = '🌙';
+            } else {
+                themeToggle.innerText = '🌓';
+            }
+            localStorage.setItem('theme', theme);
+        });
+
+        // Floating Emojis Logic
+        const emojiContainer = document.getElementById('emoji-container');
+        const emojis = ['🐶', '🐱', '🐾', '✨', '🛁'];
+
+        function createFloatingEmoji() {
+            const emoji = document.createElement('div');
+            emoji.className = 'floating-emoji';
+            emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            emoji.style.left = Math.random() * 100 + 'vw';
+            const size = 1.5 + Math.random() * 2;
+            emoji.style.fontSize = size + 'rem';
+            const duration = 8 + Math.random() * 4;
+            emoji.style.animationDuration = duration + 's';
+            emojiContainer.appendChild(emoji);
+            setTimeout(() => { emoji.remove(); }, duration * 1000);
+        }
+        setInterval(createFloatingEmoji, 800);
+
+        function toggleMenu() {
+            const nav = document.querySelector('header nav');
+            nav.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const nav = document.querySelector('header nav');
+            nav.classList.remove('active');
+        }
+    </script>
+</body>
+
+</html>
