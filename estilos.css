@@ -389,7 +389,7 @@ nav a.active {
     font-size: 1.125rem;
     color: var(--text-muted);
     margin-bottom: 2.5rem;
-    max-width: 500px;
+    max-width: 900px;
 }
 
 .hero-buttons {
@@ -877,4 +877,5 @@ footer {
         /* Too narrow for side-by-side */
     }
 }
+
 
