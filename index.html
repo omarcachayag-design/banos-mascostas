@@ -23,7 +23,7 @@
     <header class="glass">
         <div class="header-contenido">
             <div class="logo">
-                <span class="logo-icon">🐾</span>
+                <img src="imagenes/logo_transparent.png" alt="Naky Spa Logo" class="logo-img">
                 <span class="logo-texto">Naky Spa</span>
             </div>
             <nav>
@@ -257,7 +257,8 @@
                             style="width: 100%; justify-content: center; background: #25D366; box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2)">
                             Confirmar por WhatsApp
                         </button>
-                        <a href="#precios" class="btn-back-packages" style="display: flex; justify-content: center; margin-top: 1rem; font-size: 1.2rem; color: var(--text-muted); text-decoration: underline; cursor: pointer;">
+                        <a href="#precios" class="btn-back-packages"
+                            style="display: flex; justify-content: center; margin-top: 1.0rem; font-size: 1.2rem; color: var(--text-muted); text-decoration: underline; cursor: pointer;">
                             ⬅ elegir otro plan
                         </a>
                     </div>
@@ -410,12 +411,20 @@
             carrito.push({ servicio, precio });
             total += precio;
             actualizarCarrito();
-            
+
             // Mostrar notificación
             mostrarNotificacion(`¡${servicio} seleccionado!`);
 
-            // Scroll suave hasta el resumen específico
-            document.getElementById('resumen-container').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            // Scroll suave con offset para mejor visualización
+            const target = document.getElementById('resumen-container');
+            const offset = 100; // Ajuste desde la parte superior
+            const elementPosition = target.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         }
 
         function mostrarNotificacion(mensaje) {
@@ -500,6 +509,3 @@
 </body>
 
 </html>
-
-
-
