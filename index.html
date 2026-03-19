@@ -149,43 +149,74 @@
                 <div class="pricing-grid">
                     <div class="price-card glass glass-hover">
                         <h3>Baño Básico</h3>
-                        <div class="price-value">$30k</div>
+                        <div class="price-value">$40k</div>
                         <ul class="price-features">
                             <li>✓ Baño desodorante</li>
                             <li>✓ Corte de uñas</li>
                             <li>✓ Limpieza de oídos</li>
                             <li>✓ Secado profesional</li>
+                            <li>✓ Accesorios o pañoleta</li>
                         </ul>
-                        <button onclick="agregarCarrito('Baño Básico', 30000)" class="btn-outline"
+                        <button onclick="agregarCarrito('Baño Básico', 40000)" class="btn-outline"
                             style="width: 100%">Elegir</button>
                     </div>
                     <div class="price-card glass featured">
                         <span class="hero-badge"
                             style="background: var(--primary); color: white; border: none;">RECOMENDADO</span>
                         <h3>Baño + Corte</h3>
-                        <div class="price-value">$50k</div>
+                        <div class="price-value">$45k</div>
                         <ul class="price-features">
-                            <li>✓ Baño premium</li>
+                            <li>✓ Baño desodorante</li>
                             <li>✓ Corte profesional</li>
-                            <li>✓ Perfume especial</li>
-                            <li>✓ Lazo o pañoleta</li>
+                            <li>✓ Limpieza de oídos</li>
+                            <li>✓ Corte de uñas</li>
+                            <li>✓ Cepillado de dientes</li>
+                            <li>✓ Accesorios</li>
                         </ul>
-                        <button onclick="agregarCarrito('Baño y Corte', 50000)" class="btn-main"
+                        <button onclick="agregarCarrito('Baño y Corte', 45000)" class="btn-main"
                             style="width: 100%">Elegir</button>
                     </div>
                     <div class="price-card glass glass-hover">
                         <h3>Baño Medicado</h3>
-                        <div class="price-value">$60k</div>
+                        <div class="price-value">$45k</div>
                         <ul class="price-features">
                             <li>✓ Shampoo medicado</li>
                             <li>✓ Revisión de piel</li>
-                            <li>✓ Consulta básica</li>
-                            <li>✓ Tratamiento relax</li>
+                            <li>✓ Corte de uñas</li>
+                            <li>✓ limpieza de oídos</li>
+                            <li>✓ Cepillado de dientes</li>
+                            <li>✓ Accesorios</li>
                         </ul>
-                        <button onclick="agregarCarrito('Baño Medicado', 60000)" class="btn-outline"
+                        <button onclick="agregarCarrito('Baño Medicado', 45000)" class="btn-outline"
                             style="width: 100%">Elegir</button>
                     </div>
                 </div>
+
+                <div class="pricing-info-box glass glass-hover"
+                    style="margin-top: 10rem; padding: 2rem; border-radius: var(--radius-lg); text-align: center; max-width: 700px; margin-left: auto; margin-right: auto;">
+                    <p style="font-size: 1.2rem; color: var(--text-main); margin-bottom: 1.1rem; line-height: 1.9;">
+                        A partir de estos precios se realizan los planes, <span class="texto-destacado"
+                            style="font-weight: 700;">puede variar su costo</span> según el tamaño de su mascota. Para
+                        más información reserva.
+                    </p>
+                    <div
+                        style="font-size: 3.0rem; filter: drop-shadow(0 0 10px rgba(124, 77, 255, 0.5)); display: inline-block; animation: bounceDown 2s infinite;">
+                        ⬇️
+                    </div>
+                </div>
+                <style>
+                    @keyframes bounceDown {
+
+                        0%,
+                        100% {
+                            transform: translateY(0);
+                        }
+
+                        50% {
+                            transform: translateY(10px);
+                        }
+                    }
+                </style>
             </div>
         </section>
 
@@ -314,35 +345,43 @@
                         <!-- Card 1 -->
                         <div class="testimonio-card glass">
                             <span class="testimonio-emoji">🐶</span>
-                            <p class="testimonio-texto">"Llevé a Max primera vez y salimos enamorados. Nunca lo había visto tan tranquilo después de un baño. ¡Gracias por tratarlo con tanto amor!"</p>
+                            <p class="testimonio-texto">"Llevé a Max primera vez y salimos enamorados. Nunca lo había
+                                visto tan tranquilo después de un baño. ¡Gracias por tratarlo con tanto amor!"</p>
                             <span class="testimonio-autor">- Daniela R.</span>
                         </div>
                         <!-- Card 2 -->
                         <div class="testimonio-card glass">
                             <span class="testimonio-emoji">🐱</span>
-                            <p class="testimonio-texto">"mi gata es muy nerviosa y en Nakyspa supieron exactamente cómo manejarla. El lugar es silenciosa, limpio y lleno de buena energía. Volveremos siempre."</p>
+                            <p class="testimonio-texto">"mi gata es muy nerviosa y en Nakyspa supieron exactamente cómo
+                                manejarla. El lugar es silenciosa, limpio y lleno de buena energía. Volveremos siempre."
+                            </p>
                             <span class="testimonio-autor">- Laura G.</span>
                         </div>
                         <!-- Card 3 -->
                         <div class="testimonio-card glass">
                             <span class="testimonio-emoji">🛁</span>
-                            <p class="testimonio-texto">"Mas que un baño, fue una experencia de cuidado real. Desde el olor del shampo hasta la forma en que lo secaron... Todo perfecto. ¡Los Felecito!"</p>
+                            <p class="testimonio-texto">"Mas que un baño, fue una experencia de cuidado real. Desde el
+                                olor del shampo hasta la forma en que lo secaron... Todo perfecto. ¡Los Felecito!"</p>
                             <span class="testimonio-autor">- Andrés M.</span>
                         </div>
                         <!-- Duplicados para el efecto infinito -->
                         <div class="testimonio-card glass">
                             <span class="testimonio-emoji">🐶</span>
-                            <p class="testimonio-texto">"Llevé a Max primera vez y salimos enamorados. Nunca lo había visto tan tranquilo después de un baño. ¡Gracias por tratarlo con tanto amor!"</p>
+                            <p class="testimonio-texto">"Llevé a Max primera vez y salimos enamorados. Nunca lo había
+                                visto tan tranquilo después de un baño. ¡Gracias por tratarlo con tanto amor!"</p>
                             <span class="testimonio-autor">- Daniela R.</span>
                         </div>
                         <div class="testimonio-card glass">
                             <span class="testimonio-emoji">🐱</span>
-                            <p class="testimonio-texto">"mi gata es muy nerviosa y en Nakyspa supieron exactamente cómo manejarla. El lugar es silenciosa, limpio y lleno de buena energía. Volveremos siempre."</p>
+                            <p class="testimonio-texto">"mi gata es muy nerviosa y en Nakyspa supieron exactamente cómo
+                                manejarla. El lugar es silenciosa, limpio y lleno de buena energía. Volveremos siempre."
+                            </p>
                             <span class="testimonio-autor">- Laura G.</span>
                         </div>
                         <div class="testimonio-card glass">
                             <span class="testimonio-emoji">🛁</span>
-                            <p class="testimonio-texto">"Mas que un baño, fue una experencia de cuidado real. Desde el olor del shampo hasta la forma en que lo secaron... Todo perfecto. ¡Los Felecito!"</p>
+                            <p class="testimonio-texto">"Mas que un baño, fue una experencia de cuidado real. Desde el
+                                olor del shampo hasta la forma en que lo secaron... Todo perfecto. ¡Los Felecito!"</p>
                             <span class="testimonio-autor">- Andrés M.</span>
                         </div>
                     </div>
