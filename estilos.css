@@ -732,22 +732,28 @@ nav a.active {
 
 /* Testimonios Marquee */
 .marquee-viewport {
-    overflow: hidden;
+    overflow-x: auto;
     padding: 2rem 0;
-    /* Efecto de desvanecimiento en los bordes */
     mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    cursor: grab;
+    user-select: none;
+}
+
+.marquee-viewport::-webkit-scrollbar {
+    display: none;
+}
+
+.marquee-viewport:active {
+    cursor: grabbing;
 }
 
 .marquee-content {
     display: flex;
     gap: 2rem;
     width: max-content;
-    animation: marquee 30s linear infinite;
-}
-
-.marquee-content:hover {
-    animation-play-state: paused;
 }
 
 @keyframes marquee {
