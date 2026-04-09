@@ -329,6 +329,18 @@
                     <div class="galeria-item"><img src="imagenes/bano1.jpeg" alt="Baño">
                         <div class="galeria-overlay"><span>✨ Finalizado</span></div>
                     </div>
+                    <div class="galeria-item"><img src="imagenes/perro6.jpeg" alt="Perro">
+                        <div class="galeria-overlay"><span>✂️ Estilizado</span></div>
+                    </div>
+                    <div class="galeria-item"><img src="imagenes/perro7.jpeg" alt="Perro">
+                        <div class="galeria-overlay"><span>🛁 Baño Spa</span></div>
+                    </div>
+                    <div class="galeria-item"><img src="imagenes/perro8.jpeg" alt="Perro">
+                        <div class="galeria-overlay"><span>✂️ Corte Estético</span></div>
+                    </div>
+                    <div class="galeria-item"><img src="imagenes/perro9.jpeg" alt="Perro">
+                        <div class="galeria-overlay"><span>✨ Finalizado</span></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -591,6 +603,106 @@
 
             window.open(`https://wa.me/573204644455?text=${encodeURIComponent(msg)}`, "_blank");
         }
+
+        // --- TESTIMONIOS DRAG & AUTO-SCROLL ---
+        const marquee = document.querySelector('.marquee-viewport');
+        const content = document.querySelector('.marquee-content');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let scrollSpeed = 0.5; // Ajusta según prefieras
+        let animationId;
+
+        // Iniciar auto-scroll
+        const startAutoScroll = () => {
+            if (!animationId) {
+                animationId = requestAnimationFrame(autoScroll);
+            }
+        };
+
+        // Detener auto-scroll
+        const stopAutoScroll = () => {
+            cancelAnimationFrame(animationId);
+            animationId = null;
+        };
+
+        // Función de loop infinito
+        const autoScroll = () => {
+            if (!isDown) {
+                marquee.scrollLeft += scrollSpeed;
+                // Si llegamos a la mitad (ya que el contenido está duplicado), reseteamos a 0
+                if (marquee.scrollLeft >= content.offsetWidth / 2) {
+                    marquee.scrollLeft = 0;
+                }
+            }
+            animationId = requestAnimationFrame(autoScroll);
+        };
+
+        // Mouse Events
+        marquee.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - marquee.offsetLeft;
+            scrollLeft = marquee.scrollLeft;
+        });
+
+        marquee.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+
+        marquee.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+
+        marquee.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - marquee.offsetLeft;
+            const walk = (x - startX) * 1.5; // Multiplicador de velocidad de arrastre
+            marquee.scrollLeft = scrollLeft - walk;
+
+            // Loop infinito durante el arrastre
+            if (marquee.scrollLeft >= content.offsetWidth / 2) {
+                marquee.scrollLeft -= content.offsetWidth / 2;
+                startX = e.pageX - marquee.offsetLeft;
+                scrollLeft = marquee.scrollLeft;
+            } else if (marquee.scrollLeft <= 0) {
+                marquee.scrollLeft += content.offsetWidth / 2;
+                startX = e.pageX - marquee.offsetLeft;
+                scrollLeft = marquee.scrollLeft;
+            }
+        });
+
+        // Touch Events
+        marquee.addEventListener('touchstart', (e) => {
+            isDown = true;
+            startX = e.touches[0].pageX - marquee.offsetLeft;
+            scrollLeft = marquee.scrollLeft;
+        }, { passive: true });
+
+        marquee.addEventListener('touchend', () => {
+            isDown = false;
+        });
+
+        marquee.addEventListener('touchmove', (e) => {
+            if (!isDown) return;
+            const x = e.touches[0].pageX - marquee.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            marquee.scrollLeft = scrollLeft - walk;
+
+            // Loop infinito durante el toque
+            if (marquee.scrollLeft >= content.offsetWidth / 2) {
+                marquee.scrollLeft -= content.offsetWidth / 2;
+                startX = e.touches[0].pageX - marquee.offsetLeft;
+                scrollLeft = marquee.scrollLeft;
+            } else if (marquee.scrollLeft <= 0) {
+                marquee.scrollLeft += content.offsetWidth / 2;
+                startX = e.touches[0].pageX - marquee.offsetLeft;
+                scrollLeft = marquee.scrollLeft;
+            }
+        }, { passive: true });
+
+        // Iniciar el ciclo
+        startAutoScroll();
 
     </script>
 </body>
