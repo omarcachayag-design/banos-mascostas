@@ -250,13 +250,20 @@
                                 <input type="time" id="horaCliente">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label>🐾 Tipo de Mascota</label>
-                            <select id="tipoMascota" onchange="actualizarTamano()">
-                                <option value="">Selecciona...</option>
-                                <option value="Perro">Perro 🐶</option>
-                                <option value="Gato">Gato 🐱</option>
-                            </select>
+                        <div class="form-fila">
+                            <div class="form-group">
+                                <label>🐾 Tipo de Mascota</label>
+                                <select id="tipoMascota" onchange="actualizarFormularioMascota()">
+                                    <option value="">Selecciona...</option>
+                                    <option value="Perro">Perro 🐶</option>
+                                    <option value="Gato">Gato 🐱</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>🧬 Raza</label>
+                                <input type="text" id="razaMascota" list="razasDisponibles" placeholder="Ej: Poodle..." oninput="actualizarCarrito()">
+                                <datalist id="razasDisponibles"></datalist>
+                            </div>
                         </div>
                         <div class="form-fila">
                             <div class="form-group">
@@ -652,12 +659,14 @@
 
             // Actualizar detalle mascota
             const tipo = document.getElementById("tipoMascota").value;
+            const raza = document.getElementById("razaMascota").value;
             const tamano = document.getElementById("tamano").value;
             const nervioso = document.getElementById("nervioso").value;
             const resumenMascota = document.getElementById("resumen-mascota");
             
             let textoMascota = [];
             if (tipo) textoMascota.push(`Mascota: ${tipo}`);
+            if (raza) textoMascota.push(`Raza: ${raza}`);
             if (tamano) textoMascota.push(`Tamaño: ${tamano}`);
             if (nervioso) textoMascota.push(`Nervioso: ${nervioso}`);
             
@@ -670,12 +679,31 @@
             actualizarCarrito();
         }
 
-        function actualizarTamano() {
+        function actualizarFormularioMascota() {
             const mascota = document.getElementById("tipoMascota").value;
             const selectTamano = document.getElementById("tamano");
+            const datalistRazas = document.getElementById("razasDisponibles");
+            const inputRaza = document.getElementById("razaMascota");
+            
+            // Limpiar datos
+            inputRaza.value = "";
+            datalistRazas.innerHTML = "";
             selectTamano.innerHTML = '<option value="">Selecciona...</option>';
-            const opciones = mascota === "Perro" ? ["Pequeño", "Mediano", "Grande"] : ["Estándar"];
-            opciones.forEach(opt => selectTamano.innerHTML += `<option value="${opt}">${opt}</option>`);
+            
+            if (mascota === "Perro") {
+                const tamanos = ["Pequeño", "Mediano", "Grande"];
+                tamanos.forEach(opt => selectTamano.innerHTML += `<option value="${opt}">${opt}</option>`);
+                
+                const razasPerro = ["Poodle", "Bulldog", "Golden Retriever", "Pug", "Husky", "Labrador", "Beagle", "Chihuahua", "Shih Tzu", "Pomerania", "Schnauzer", "Yorkshire", "Mestizo / Criollo"];
+                razasPerro.forEach(raza => datalistRazas.innerHTML += `<option value="${raza}">`);
+            } else if (mascota === "Gato") {
+                const tamanos = ["Estándar"];
+                tamanos.forEach(opt => selectTamano.innerHTML += `<option value="${opt}">${opt}</option>`);
+                
+                const razasGato = ["Persa", "Siamés", "Maine Coon", "Angora", "Esfinge", "Bengala", "Azul Ruso", "Mestizo / Criollo"];
+                razasGato.forEach(raza => datalistRazas.innerHTML += `<option value="${raza}">`);
+            }
+            
             actualizarCarrito();
         }
 
@@ -687,6 +715,7 @@
             const hora = document.getElementById("horaCliente").value;
             
             const tipo = document.getElementById("tipoMascota").value;
+            const raza = document.getElementById("razaMascota").value;
             const tamano = document.getElementById("tamano").value;
             const nervioso = document.getElementById("nervioso").value;
 
@@ -700,6 +729,7 @@
             msg += `⏰ Hora: ${hora}\n\n`;
             msg += `🐕 *Datos de la Mascota*\n`;
             msg += `- Tipo: ${tipo}\n`;
+            msg += `- Raza: ${raza || 'No especificada'}\n`;
             msg += `- Tamaño: ${tamano}\n`;
             msg += `- ¿Nervioso?: ${nervioso}\n\n`;
             msg += `🛁 *Servicios solicitados*\n`;
