@@ -69,6 +69,11 @@ body.light-mode .menu-toggle {
     color: var(--text-main) !important;
 }
 
+body.light-mode .form-group input,
+body.light-mode .form-group select {
+    background: #ffffff;
+}
+
 body.light-mode .hero-titulo,
 body.light-mode .seccion-header h2,
 body.light-mode .price-value {
