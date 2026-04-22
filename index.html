@@ -261,13 +261,13 @@
                         <div class="form-fila">
                             <div class="form-group">
                                 <label>Tamaño</label>
-                                <select id="tamano">
+                                <select id="tamano" onchange="actualizarCarrito()">
                                     <option value="">Selecciona...</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>¿Nervioso?</label>
-                                <select id="nervioso">
+                                <select id="nervioso" onchange="actualizarCarrito()">
                                     <option value="No">No</option>
                                     <option value="Sí">Sí</option>
                                 </select>
@@ -279,6 +279,7 @@
                         <ul id="lista-carrito">
                             <li style="color: var(--text-muted)">Agrega servicios arriba</li>
                         </ul>
+                        <div id="resumen-mascota" style="margin-top: 1rem;"></div>
                         <div
                             style="margin: 2rem 0; padding-top: 1rem; border-top: 1px solid var(--glass-border); display: flex; justify-content: space-between; align-items: center">
                             <span style="font-weight: 700">Total:</span>
@@ -648,6 +649,19 @@
                 });
             }
             document.getElementById("total").innerText = "$" + total.toLocaleString();
+
+            // Actualizar detalle mascota
+            const tipo = document.getElementById("tipoMascota").value;
+            const tamano = document.getElementById("tamano").value;
+            const nervioso = document.getElementById("nervioso").value;
+            const resumenMascota = document.getElementById("resumen-mascota");
+            
+            let textoMascota = [];
+            if (tipo) textoMascota.push(`Mascota: ${tipo}`);
+            if (tamano) textoMascota.push(`Tamaño: ${tamano}`);
+            if (nervioso) textoMascota.push(`Nervioso: ${nervioso}`);
+            
+            resumenMascota.innerHTML = textoMascota.length > 0 ? `<div style="padding: 0.8rem; background: rgba(124, 77, 255, 0.1); border-radius: 8px; border: 1px solid rgba(124, 77, 255, 0.2); color: var(--text-muted); font-size: 0.9rem;">🐾 ${textoMascota.join(' | ')}</div>` : '';
         }
 
         function eliminarItem(index) {
@@ -662,6 +676,7 @@
             selectTamano.innerHTML = '<option value="">Selecciona...</option>';
             const opciones = mascota === "Perro" ? ["Pequeño", "Mediano", "Grande"] : ["Estándar"];
             opciones.forEach(opt => selectTamano.innerHTML += `<option value="${opt}">${opt}</option>`);
+            actualizarCarrito();
         }
 
         function enviarWhatsApp() {
@@ -670,15 +685,24 @@
             const telefono = document.getElementById("telefonoCliente").value;
             const fecha = document.getElementById("fechaCliente").value;
             const hora = document.getElementById("horaCliente").value;
+            
+            const tipo = document.getElementById("tipoMascota").value;
+            const tamano = document.getElementById("tamano").value;
+            const nervioso = document.getElementById("nervioso").value;
 
             if (!nombre || !telefono || !fecha || !hora) return alert("Por favor completa todos los datos de la reserva.");
+            if (!tipo || !tamano) return alert("Por favor completa los datos de tu mascota.");
 
             let msg = `🐾 *NUEVA RESERVA - NAKY SPA* 🐾\n\n`;
             msg += `👤 Cliente: ${nombre}\n`;
             msg += `📞 Teléfono: ${telefono}\n`;
             msg += `📅 Fecha: ${fecha}\n`;
             msg += `⏰ Hora: ${hora}\n\n`;
-            msg += `🛁 Servicios solicitados:\n`;
+            msg += `🐕 *Datos de la Mascota*\n`;
+            msg += `- Tipo: ${tipo}\n`;
+            msg += `- Tamaño: ${tamano}\n`;
+            msg += `- ¿Nervioso?: ${nervioso}\n\n`;
+            msg += `🛁 *Servicios solicitados*\n`;
             carrito.forEach(i => msg += `- ${i.servicio} ($${i.precio.toLocaleString()})\n`);
             msg += `\n💰 Total: $${total.toLocaleString()}\n\n`;
             msg += `✨ Gracias por confiar en Naky Spa ✨`;
