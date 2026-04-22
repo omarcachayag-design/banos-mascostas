@@ -639,8 +639,43 @@ nav a.active {
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-sm);
-    color: var(--white);
-    outline: none;
+    color: var(--text-main);
+}
+
+/* Autocomplete personalizado */
+.autocomplete-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.autocomplete-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg-dark);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 100;
+    display: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+}
+
+body.light-mode .autocomplete-list {
+    background: rgba(248, 250, 252, 0.95);
+}
+
+.autocomplete-item {
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.autocomplete-item:hover {
+    background: rgba(124, 77, 255, 0.2);
 }
 
 .form-group input:focus {

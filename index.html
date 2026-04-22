@@ -261,8 +261,10 @@
                             </div>
                             <div class="form-group">
                                 <label>🧬 Raza</label>
-                                <input type="text" id="razaMascota" list="razasDisponibles" placeholder="Ej: Poodle..." oninput="actualizarCarrito()">
-                                <datalist id="razasDisponibles"></datalist>
+                                <div class="autocomplete-wrapper">
+                                    <input type="text" id="razaMascota" placeholder="Ej: Poodle..." oninput="filtrarRazas()" onfocus="mostrarRazas()">
+                                    <div id="razasDisponibles" class="autocomplete-list"></div>
+                                </div>
                             </div>
                         </div>
                         <div class="form-fila">
@@ -679,33 +681,73 @@
             actualizarCarrito();
         }
 
+        let razasActuales = [];
+
         function actualizarFormularioMascota() {
             const mascota = document.getElementById("tipoMascota").value;
             const selectTamano = document.getElementById("tamano");
-            const datalistRazas = document.getElementById("razasDisponibles");
+            const divRazas = document.getElementById("razasDisponibles");
             const inputRaza = document.getElementById("razaMascota");
             
             // Limpiar datos
             inputRaza.value = "";
-            datalistRazas.innerHTML = "";
+            divRazas.innerHTML = "";
+            divRazas.style.display = "none";
             selectTamano.innerHTML = '<option value="">Selecciona...</option>';
+            razasActuales = [];
             
             if (mascota === "Perro") {
                 const tamanos = ["Pequeño", "Mediano", "Grande"];
                 tamanos.forEach(opt => selectTamano.innerHTML += `<option value="${opt}">${opt}</option>`);
-                
-                const razasPerro = ["Poodle", "Bulldog", "Golden Retriever", "Pug", "Husky", "Labrador", "Beagle", "Chihuahua", "Shih Tzu", "Pomerania", "Schnauzer", "Yorkshire", "Mestizo / Criollo"];
-                razasPerro.forEach(raza => datalistRazas.innerHTML += `<option value="${raza}">`);
+                razasActuales = ["Poodle", "Bulldog", "Golden Retriever", "Pug", "Husky", "Labrador", "Beagle", "Chihuahua", "Shih Tzu", "Pomerania", "Schnauzer", "Yorkshire", "Mestizo / Criollo"];
             } else if (mascota === "Gato") {
                 const tamanos = ["Estándar"];
                 tamanos.forEach(opt => selectTamano.innerHTML += `<option value="${opt}">${opt}</option>`);
-                
-                const razasGato = ["Persa", "Siamés", "Maine Coon", "Angora", "Esfinge", "Bengala", "Azul Ruso", "Mestizo / Criollo"];
-                razasGato.forEach(raza => datalistRazas.innerHTML += `<option value="${raza}">`);
+                razasActuales = ["Persa", "Siamés", "Maine Coon", "Angora", "Esfinge", "Bengala", "Azul Ruso", "Mestizo / Criollo"];
             }
             
             actualizarCarrito();
         }
+
+        function mostrarRazas() {
+            if (razasActuales.length === 0) return;
+            filtrarRazas();
+        }
+
+        function filtrarRazas() {
+            const val = document.getElementById("razaMascota").value.toLowerCase();
+            const divRazas = document.getElementById("razasDisponibles");
+            
+            divRazas.innerHTML = "";
+            let coincidencias = razasActuales.filter(r => r.toLowerCase().includes(val));
+            
+            if (coincidencias.length > 0) {
+                coincidencias.forEach(raza => {
+                    const item = document.createElement("div");
+                    item.className = "autocomplete-item";
+                    item.innerText = raza;
+                    item.onclick = function() {
+                        document.getElementById("razaMascota").value = raza;
+                        divRazas.style.display = "none";
+                        actualizarCarrito();
+                    };
+                    divRazas.appendChild(item);
+                });
+                divRazas.style.display = "block";
+            } else {
+                divRazas.style.display = "none";
+            }
+            
+            actualizarCarrito();
+        }
+
+        // Ocultar desplegable al hacer clic fuera
+        document.addEventListener("click", function(e) {
+            if (!e.target.closest('.autocomplete-wrapper')) {
+                const divRazas = document.getElementById("razasDisponibles");
+                if (divRazas) divRazas.style.display = "none";
+            }
+        });
 
         function enviarWhatsApp() {
             if (carrito.length === 0) return alert("Agrega servicios primero");
