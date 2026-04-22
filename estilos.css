@@ -642,6 +642,11 @@ nav a.active {
     color: var(--text-main);
 }
 
+.form-group select option {
+    background: var(--bg-dark);
+    color: var(--text-main);
+}
+
 /* Autocomplete personalizado */
 .autocomplete-wrapper {
     position: relative;
