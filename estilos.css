@@ -812,6 +812,16 @@ footer {
     border-top: 1px solid var(--glass-border);
 }
 
+.footer-link-map {
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.footer-link-map:hover {
+    color: var(--secondary) !important;
+    transform: translateX(5px);
+}
+
 .footer-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
