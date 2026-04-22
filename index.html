@@ -477,6 +477,42 @@
     </footer>
 
     <script>
+        // --- SONIDO GALERIA ---
+        let lastSoundTime = 0;
+        function playGallerySound() {
+            const now = Date.now();
+            if (now - lastSoundTime < 200) return; // Evitar sonido doble al tocar en móvil (touchstart + mouseenter)
+            lastSoundTime = now;
+
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                
+                const playTone = (freq, type, duration, vol) => {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = type;
+                    osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+                    osc.frequency.exponentialRampToValueAtTime(freq / 4, audioCtx.currentTime + duration);
+                    gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + duration);
+                };
+
+                // Combinación de dos tonos para un sonido más "orgánico" y cristalino
+                playTone(1800, 'sine', 0.08, 0.03); // Tono alto (click)
+                playTone(600, 'sine', 0.12, 0.05);  // Tono medio (cuerpo del pop)
+            } catch (e) {}
+        }
+
+        // Asignar eventos de hover (computadora) y toque (móvil)
+        document.querySelectorAll('.galeria-item').forEach(item => {
+            item.addEventListener('mouseenter', playGallerySound);
+            item.addEventListener('touchstart', playGallerySound, { passive: true });
+        });
+
         let carrito = [];
         let total = 0;
 
@@ -520,8 +556,8 @@
             const size = 1.5 + Math.random() * 2;
             emoji.style.fontSize = size + 'rem';
 
-            // Random duration between 8 and 12 seconds
-            const duration = 8 + Math.random() * 4;
+            // Random duration between 15 and 25 seconds
+            const duration = 15 + Math.random() * 10;
             emoji.style.animationDuration = duration + 's';
 
             emojiContainer.appendChild(emoji);
@@ -532,8 +568,8 @@
             }, duration * 1000);
         }
 
-        // Spawn a new emoji every 800ms
-        setInterval(createFloatingEmoji, 800);
+        // Spawn a new emoji every 1200ms
+        setInterval(createFloatingEmoji, 1200);
 
         function toggleMenu() {
             const nav = document.querySelector('header nav');
