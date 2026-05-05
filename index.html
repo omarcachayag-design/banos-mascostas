@@ -61,7 +61,8 @@
                         </div>
                     </div>
                     <div class="hero-image-container" data-aos="fade-left">
-                        <img src="imagenes/perro5.jpeg" alt="Mascota feliz" class="hero-img-main">
+                        <img src="imagenes/perro5.jpg" alt="Mascota feliz" class="hero-img-main">
+                        <!-- Tarjeta Flotante 1: Info -->
                         <div class="hero-floating-card glass">
                             <span style="font-size: 2rem;">🛁</span>
                             <div>
@@ -158,7 +159,7 @@
                             <li>✓ Secado profesional</li>
                             <li>✓ Accesorios o pañoleta</li>
                         </ul>
-                        <button onclick="agregarCarrito('Baño Básico', 40000)" class="btn-outline"
+                        <button onclick="agregarCarrito('Baño Básico', 40000, this)" class="btn-outline"
                             style="width: 100%">Elegir</button>
                     </div>
                     <div class="price-card glass featured">
@@ -174,7 +175,7 @@
                             <li>✓ Cepillado de dientes</li>
                             <li>✓ Accesorios</li>
                         </ul>
-                        <button onclick="agregarCarrito('Baño y Corte', 45000)" class="btn-main"
+                        <button onclick="agregarCarrito('Baño y Corte', 45000, this)" class="btn-main"
                             style="width: 100%">Elegir</button>
                     </div>
                     <div class="price-card glass glass-hover">
@@ -188,7 +189,7 @@
                             <li>✓ Cepillado de dientes</li>
                             <li>✓ Accesorios</li>
                         </ul>
-                        <button onclick="agregarCarrito('Baño Medicado', 45000)" class="btn-outline"
+                        <button onclick="agregarCarrito('Baño Medicado', 45000, this)" class="btn-outline"
                             style="width: 100%">Elegir</button>
                     </div>
                 </div>
@@ -253,16 +254,29 @@
                         <div class="form-fila">
                             <div class="form-group">
                                 <label>🐾 Tipo de Mascota</label>
-                                <select id="tipoMascota" onchange="actualizarFormularioMascota()">
-                                    <option value="">Selecciona...</option>
-                                    <option value="Perro">Perro 🐶</option>
-                                    <option value="Gato">Gato 🐱</option>
-                                </select>
+                                <div class="custom-select-wrapper" id="wrapper-tipoMascota">
+                                    <div class="select-trigger" onclick="toggleCustomSelect('tipoMascota')">
+                                        Selecciona...</div>
+                                    <div class="select-options" id="options-tipoMascota">
+                                        <div class="select-option"
+                                            onclick="selectCustomOption('tipoMascota', 'Perro', 'Perro 🐶', this)">Perro 🐶
+                                        </div>
+                                        <div class="select-option"
+                                            onclick="selectCustomOption('tipoMascota', 'Gato', 'Gato 🐱', this)">Gato 🐱</div>
+                                    </div>
+                                    <select id="tipoMascota" onchange="actualizarFormularioMascota()"
+                                        style="display:none">
+                                        <option value="">Selecciona...</option>
+                                        <option value="Perro">Perro</option>
+                                        <option value="Gato">Gato</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>🧬 Raza</label>
                                 <div class="autocomplete-wrapper">
-                                    <input type="text" id="razaMascota" placeholder="Ej: Poodle..." oninput="filtrarRazas()" onfocus="mostrarRazas()">
+                                    <input type="text" id="razaMascota" placeholder="Ej: Poodle..."
+                                        oninput="filtrarRazas()" onfocus="mostrarRazas()">
                                     <div id="razasDisponibles" class="autocomplete-list"></div>
                                 </div>
                             </div>
@@ -270,16 +284,32 @@
                         <div class="form-fila">
                             <div class="form-group">
                                 <label>Tamaño</label>
-                                <select id="tamano" onchange="actualizarCarrito()">
-                                    <option value="">Selecciona...</option>
-                                </select>
+                                <div class="custom-select-wrapper" id="wrapper-tamano">
+                                    <div class="select-trigger" onclick="toggleCustomSelect('tamano')">Selecciona...
+                                    </div>
+                                    <div class="select-options" id="options-tamano">
+                                        <!-- Opciones dinámicas -->
+                                    </div>
+                                    <select id="tamano" onchange="actualizarCarrito()" style="display:none">
+                                        <option value="">Selecciona...</option>
+                                    </select>
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label>¿Nervioso?</label>
-                                <select id="nervioso" onchange="actualizarCarrito()">
-                                    <option value="No">No</option>
-                                    <option value="Sí">Sí</option>
-                                </select>
+                                <div class="custom-select-wrapper" id="wrapper-nervioso">
+                                    <div class="select-trigger" onclick="toggleCustomSelect('nervioso')">No</div>
+                                    <div class="select-options" id="options-nervioso">
+                                        <div class="select-option" onclick="selectCustomOption('nervioso', 'No', 'No', this)">
+                                            No</div>
+                                        <div class="select-option" onclick="selectCustomOption('nervioso', 'Sí', 'Sí', this)">
+                                            Sí</div>
+                                    </div>
+                                    <select id="nervioso" onchange="actualizarCarrito()" style="display:none">
+                                        <option value="No">No</option>
+                                        <option value="Sí">Sí</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -369,9 +399,11 @@
                         <div class="testimonio-card glass">
                             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                                 <div style="color: #FFD700; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div>
-                                <span style="font-size: 2.5rem; color: var(--primary-light); opacity: 0.3; font-family: serif; line-height: 1;">&ldquo;</span>
+                                <span
+                                    style="font-size: 2.5rem; color: var(--primary-light); opacity: 0.3; font-family: serif; line-height: 1;">&ldquo;</span>
                             </div>
-                            <p class="testimonio-texto">"Llevé a Max primera vez y salimos enamorados. Nunca lo había visto tan tranquilo después de un baño. ¡Gracias por tratarlo con tanto amor!"</p>
+                            <p class="testimonio-texto">"Llevé a Max primera vez y salimos enamorados. Nunca lo había
+                                visto tan tranquilo después de un baño. ¡Gracias por tratarlo con tanto amor!"</p>
                             <div>
                                 <span class="testimonio-autor">Daniela R.</span>
                                 <small style="color: var(--text-muted)">Dueña de 'Max'</small>
@@ -381,9 +413,12 @@
                         <div class="testimonio-card glass">
                             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                                 <div style="color: #FFD700; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div>
-                                <span style="font-size: 2.5rem; color: var(--primary-light); opacity: 0.3; font-family: serif; line-height: 1;">&ldquo;</span>
+                                <span
+                                    style="font-size: 2.5rem; color: var(--primary-light); opacity: 0.3; font-family: serif; line-height: 1;">&ldquo;</span>
                             </div>
-                            <p class="testimonio-texto">"Mi gata es muy nerviosa y en Nakyspa supieron exactamente cómo manejarla. El lugar es silencioso, limpio y lleno de buena energía. Volveremos siempre."</p>
+                            <p class="testimonio-texto">"Mi gata es muy nerviosa y en Nakyspa supieron exactamente cómo
+                                manejarla. El lugar es silencioso, limpio y lleno de buena energía. Volveremos siempre."
+                            </p>
                             <div>
                                 <span class="testimonio-autor">Laura G.</span>
                                 <small style="color: var(--text-muted)">Dueña de 'Luna'</small>
@@ -393,9 +428,11 @@
                         <div class="testimonio-card glass">
                             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                                 <div style="color: #FFD700; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div>
-                                <span style="font-size: 2.5rem; color: var(--primary-light); opacity: 0.3; font-family: serif; line-height: 1;">&ldquo;</span>
+                                <span
+                                    style="font-size: 2.5rem; color: var(--primary-light); opacity: 0.3; font-family: serif; line-height: 1;">&ldquo;</span>
                             </div>
-                            <p class="testimonio-texto">"Más que un baño, fue una experiencia de cuidado real. Desde el olor del shampoo hasta la forma en que lo secaron... Todo perfecto. ¡Los felicito!"</p>
+                            <p class="testimonio-texto">"Más que un baño, fue una experiencia de cuidado real. Desde el
+                                olor del shampoo hasta la forma en que lo secaron... Todo perfecto. ¡Los felicito!"</p>
                             <div>
                                 <span class="testimonio-autor">Andrés M.</span>
                                 <small style="color: var(--text-muted)">Dueño de 'Toby'</small>
@@ -405,9 +442,11 @@
                         <div class="testimonio-card glass">
                             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                                 <div style="color: #FFD700; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div>
-                                <span style="font-size: 2.5rem; color: var(--primary-light); opacity: 0.3; font-family: serif; line-height: 1;">&ldquo;</span>
+                                <span
+                                    style="font-size: 2.5rem; color: var(--primary-light); opacity: 0.3; font-family: serif; line-height: 1;">&ldquo;</span>
                             </div>
-                            <p class="testimonio-texto">"Excelente servicio. Traje a mi perrito para un baño y corte, quedó hermoso y lo trataron con mucho cariño. ¡Súper recomendados!"</p>
+                            <p class="testimonio-texto">"Excelente servicio. Traje a mi perrito para un baño y corte,
+                                quedó hermoso y lo trataron con mucho cariño. ¡Súper recomendados!"</p>
                             <div>
                                 <span class="testimonio-autor">Ana García</span>
                                 <small style="color: var(--text-muted)">Dueña de 'Rocky'</small>
@@ -417,9 +456,12 @@
                         <div class="testimonio-card glass">
                             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                                 <div style="color: #FFD700; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div>
-                                <span style="font-size: 2.5rem; color: var(--primary-light); opacity: 0.3; font-family: serif; line-height: 1;">&ldquo;</span>
+                                <span
+                                    style="font-size: 2.5rem; color: var(--primary-light); opacity: 0.3; font-family: serif; line-height: 1;">&ldquo;</span>
                             </div>
-                            <p class="testimonio-texto">"Traje a mi labrador que le tiene pavor al agua y salí sorprendida. Lo trataron con una paciencia increíble. El corte de uñas fue perfecto."</p>
+                            <p class="testimonio-texto">"Traje a mi labrador que le tiene pavor al agua y salí
+                                sorprendida. Lo trataron con una paciencia increíble. El corte de uñas fue perfecto."
+                            </p>
                             <div>
                                 <span class="testimonio-autor">Camila V.</span>
                                 <small style="color: var(--text-muted)">Dueña de 'Bruno'</small>
@@ -429,9 +471,11 @@
                         <div class="testimonio-card glass">
                             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                                 <div style="color: #FFD700; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div>
-                                <span style="font-size: 2.5rem; color: var(--primary-light); opacity: 0.3; font-family: serif; line-height: 1;">&ldquo;</span>
+                                <span
+                                    style="font-size: 2.5rem; color: var(--primary-light); opacity: 0.3; font-family: serif; line-height: 1;">&ldquo;</span>
                             </div>
-                            <p class="testimonio-texto">"La mejor peluquería canina de Neiva. El aroma que dejan en el pelo dura muchísimos días y se nota que usan productos de alta calidad."</p>
+                            <p class="testimonio-texto">"La mejor peluquería canina de Neiva. El aroma que dejan en el
+                                pelo dura muchísimos días y se nota que usan productos de alta calidad."</p>
                             <div>
                                 <span class="testimonio-autor">Ricardo P.</span>
                                 <small style="color: var(--text-muted)">Dueño de 'Coco'</small>
@@ -441,9 +485,11 @@
                         <div class="testimonio-card glass">
                             <div style="display: flex; justify-content: space-between; align-items: flex-start;">
                                 <div style="color: #FFD700; font-size: 1.2rem;">⭐⭐⭐⭐⭐</div>
-                                <span style="font-size: 2.5rem; color: var(--primary-light); opacity: 0.3; font-family: serif; line-height: 1;">&ldquo;</span>
+                                <span
+                                    style="font-size: 2.5rem; color: var(--primary-light); opacity: 0.3; font-family: serif; line-height: 1;">&ldquo;</span>
                             </div>
-                            <p class="testimonio-texto">"Excelente atención desde que entras. El personal es muy profesional y se preocupan por cada detalle. Mi perrita salió feliz."</p>
+                            <p class="testimonio-texto">"Excelente atención desde que entras. El personal es muy
+                                profesional y se preocupan por cada detalle. Mi perrita salió feliz."</p>
                             <div>
                                 <span class="testimonio-autor">Elena S.</span>
                                 <small style="color: var(--text-muted)">Dueña de 'Mora'</small>
@@ -496,7 +542,7 @@
 
             try {
                 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                
+
                 const playTone = (freq, type, duration, vol) => {
                     const osc = audioCtx.createOscillator();
                     const gain = audioCtx.createGain();
@@ -514,7 +560,7 @@
                 // Combinación de dos tonos para un sonido más "orgánico" y cristalino
                 playTone(1800, 'sine', 0.08, 0.03); // Tono alto (click)
                 playTone(600, 'sine', 0.12, 0.05);  // Tono medio (cuerpo del pop)
-            } catch (e) {}
+            } catch (e) { }
         }
 
         // Asignar eventos de hover (computadora) y toque (móvil)
@@ -557,29 +603,40 @@
         function createFloatingEmoji() {
             const emoji = document.createElement('div');
             emoji.className = 'floating-emoji';
-            emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            // Probabilidad de mostrar el nombre de la marca en lugar de un emoji
+            const isBrand = Math.random() > 0.8; // 20% de probabilidad
+            
+            if (isBrand) {
+                emoji.innerText = 'Naky Spa';
+                emoji.style.fontSize = '1.2rem';
+                emoji.style.fontWeight = '800';
+                emoji.style.whiteSpace = 'nowrap';
+                emoji.style.letterSpacing = '1px';
+                emoji.style.opacity = '0.3';
+            } else {
+                emoji.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+                const size = 1.5 + Math.random() * 2;
+                emoji.style.fontSize = size + 'rem';
+            }
 
-            // Random horizontal position
+            // Posición horizontal aleatoria
             emoji.style.left = Math.random() * 100 + 'vw';
 
-            // Random size variation
-            const size = 1.5 + Math.random() * 2;
-            emoji.style.fontSize = size + 'rem';
-
-            // Random duration between 15 and 25 seconds
+            // Duración aleatoria entre 15 y 25 segundos
             const duration = 15 + Math.random() * 10;
             emoji.style.animationDuration = duration + 's';
 
             emojiContainer.appendChild(emoji);
 
-            // Remove after animation finishes
+            // Eliminar después de que termine la animación
             setTimeout(() => {
                 emoji.remove();
             }, duration * 1000);
         }
 
-        // Spawn a new emoji every 1200ms
-        setInterval(createFloatingEmoji, 1200);
+        // Generar un nuevo elemento cada 1500ms
+        setInterval(createFloatingEmoji, 1500);
 
         function toggleMenu() {
             const nav = document.querySelector('header nav');
@@ -598,7 +655,28 @@
             else header.classList.remove('scrolled');
         });
 
-        function agregarCarrito(servicio, precio) {
+        function agregarCarrito(servicio, precio, element) {
+            // Manejo visual de selección de tarjetas
+            if (element) {
+                // Remover estado destacado de todas las tarjetas
+                document.querySelectorAll('.price-card').forEach(card => {
+                    card.classList.remove('selected', 'featured');
+                    const btn = card.querySelector('button');
+                    if (btn) {
+                        btn.classList.remove('btn-main');
+                        btn.classList.add('btn-outline');
+                    }
+                });
+
+                // Añadir estado seleccionado a la tarjeta actual
+                const cardActual = element.closest('.price-card');
+                cardActual.classList.add('selected');
+                
+                // Cambiar estilo del botón seleccionado
+                element.classList.remove('btn-outline');
+                element.classList.add('btn-main');
+            }
+
             carrito.push({ servicio, precio });
             total += precio;
             actualizarCarrito();
@@ -665,13 +743,13 @@
             const tamano = document.getElementById("tamano").value;
             const nervioso = document.getElementById("nervioso").value;
             const resumenMascota = document.getElementById("resumen-mascota");
-            
+
             let textoMascota = [];
             if (tipo) textoMascota.push(`Mascota: ${tipo}`);
             if (raza) textoMascota.push(`Raza: ${raza}`);
             if (tamano) textoMascota.push(`Tamaño: ${tamano}`);
             if (nervioso) textoMascota.push(`Nervioso: ${nervioso}`);
-            
+
             resumenMascota.innerHTML = textoMascota.length > 0 ? `<div style="padding: 0.8rem; background: rgba(124, 77, 255, 0.1); border-radius: 8px; border: 1px solid rgba(124, 77, 255, 0.2); color: var(--text-muted); font-size: 0.9rem;">🐾 ${textoMascota.join(' | ')}</div>` : '';
         }
 
@@ -683,29 +761,78 @@
 
         let razasActuales = [];
 
+        actualizarCarrito();
+
+        // --- CUSTOM SELECT LOGIC ---
+        function toggleCustomSelect(id) {
+            const wrapper = document.getElementById(`wrapper-${id}`);
+            const isActive = wrapper.classList.contains('active');
+
+            // Cerrar otros abiertos
+            document.querySelectorAll('.custom-select-wrapper').forEach(w => w.classList.remove('active'));
+
+            if (!isActive) {
+                wrapper.classList.add('active');
+            }
+        }
+
+        function selectCustomOption(id, value, label, element) {
+            const select = document.getElementById(id);
+            const wrapper = document.getElementById(`wrapper-${id}`);
+            const trigger = wrapper.querySelector('.select-trigger');
+            
+            // Actualizar select original
+            select.value = value;
+            trigger.innerText = label;
+            
+            // Quitar clase selected de otros
+            wrapper.querySelectorAll('.select-option').forEach(opt => opt.classList.remove('selected'));
+            // Marcar actual
+            if (element) element.classList.add('selected');
+            
+            wrapper.classList.remove('active');
+            
+            // Disparar evento onchange manual
+            select.dispatchEvent(new Event('change'));
+        }
+
         function actualizarFormularioMascota() {
             const mascota = document.getElementById("tipoMascota").value;
             const selectTamano = document.getElementById("tamano");
             const divRazas = document.getElementById("razasDisponibles");
             const inputRaza = document.getElementById("razaMascota");
-            
+
+            // Nuevas variables para el custom select de tamaño
+            const wrapperTamano = document.getElementById("wrapper-tamano");
+            const optionsTamano = document.getElementById("options-tamano");
+            const triggerTamano = wrapperTamano.querySelector('.select-trigger');
+
             // Limpiar datos
             inputRaza.value = "";
             divRazas.innerHTML = "";
             divRazas.style.display = "none";
             selectTamano.innerHTML = '<option value="">Selecciona...</option>';
+            optionsTamano.innerHTML = ""; // Limpiar custom options
+            triggerTamano.innerText = "Selecciona...";
             razasActuales = [];
-            
+
             if (mascota === "Perro") {
                 const tamanos = ["Pequeño", "Mediano", "Grande"];
-                tamanos.forEach(opt => selectTamano.innerHTML += `<option value="${opt}">${opt}</option>`);
+                tamanos.forEach(opt => {
+                    selectTamano.innerHTML += `<option value="${opt}">${opt}</option>`;
+                    // Agregar a las opciones personalizadas
+                    optionsTamano.innerHTML += `<div class="select-option" onclick="selectCustomOption('tamano', '${opt}', '${opt}', this)">${opt}</div>`;
+                });
                 razasActuales = ["Poodle", "Bulldog", "Golden Retriever", "Pug", "Husky", "Labrador", "Beagle", "Chihuahua", "Shih Tzu", "Pomerania", "Schnauzer", "Yorkshire", "Mestizo / Criollo"];
             } else if (mascota === "Gato") {
                 const tamanos = ["Estándar"];
-                tamanos.forEach(opt => selectTamano.innerHTML += `<option value="${opt}">${opt}</option>`);
+                tamanos.forEach(opt => {
+                    selectTamano.innerHTML += `<option value="${opt}">${opt}</option>`;
+                    optionsTamano.innerHTML += `<div class="select-option" onclick="selectCustomOption('tamano', '${opt}', '${opt}', this)">${opt}</div>`;
+                });
                 razasActuales = ["Persa", "Siamés", "Maine Coon", "Angora", "Esfinge", "Bengala", "Azul Ruso", "Mestizo / Criollo"];
             }
-            
+
             actualizarCarrito();
         }
 
@@ -717,16 +844,16 @@
         function filtrarRazas() {
             const val = document.getElementById("razaMascota").value.toLowerCase();
             const divRazas = document.getElementById("razasDisponibles");
-            
+
             divRazas.innerHTML = "";
             let coincidencias = razasActuales.filter(r => r.toLowerCase().includes(val));
-            
+
             if (coincidencias.length > 0) {
                 coincidencias.forEach(raza => {
                     const item = document.createElement("div");
                     item.className = "autocomplete-item";
                     item.innerText = raza;
-                    item.onclick = function() {
+                    item.onclick = function () {
                         document.getElementById("razaMascota").value = raza;
                         divRazas.style.display = "none";
                         actualizarCarrito();
@@ -737,15 +864,19 @@
             } else {
                 divRazas.style.display = "none";
             }
-            
+
             actualizarCarrito();
         }
 
         // Ocultar desplegable al hacer clic fuera
-        document.addEventListener("click", function(e) {
+        document.addEventListener("click", function (e) {
             if (!e.target.closest('.autocomplete-wrapper')) {
                 const divRazas = document.getElementById("razasDisponibles");
                 if (divRazas) divRazas.style.display = "none";
+            }
+
+            if (!e.target.closest('.custom-select-wrapper')) {
+                document.querySelectorAll('.custom-select-wrapper').forEach(w => w.classList.remove('active'));
             }
         });
 
@@ -755,7 +886,7 @@
             const telefono = document.getElementById("telefonoCliente").value;
             const fecha = document.getElementById("fechaCliente").value;
             const hora = document.getElementById("horaCliente").value;
-            
+
             const tipo = document.getElementById("tipoMascota").value;
             const raza = document.getElementById("razaMascota").value;
             const tamano = document.getElementById("tamano").value;
@@ -794,7 +925,7 @@
             const itemsVisible = getVisibleItems();
             const totalDots = cards.length - itemsVisible + 1;
             dotsContainer.innerHTML = '';
-            
+
             for (let i = 0; i < totalDots; i++) {
                 const dot = document.createElement('button');
                 dot.classList.add('dot');
@@ -815,9 +946,9 @@
             const cardWidth = cards[0].offsetWidth;
             const gap = 32; // 2rem en px
             const move = currentIndex * (cardWidth + gap);
-            
+
             track.style.transform = `translateX(-${move}px)`;
-            
+
             // Actualizar puntitos
             const dots = document.querySelectorAll('.dot');
             dots.forEach((dot, index) => {
@@ -828,7 +959,7 @@
         function goToSlide(index) {
             const itemsVisible = getVisibleItems();
             const maxIndex = cards.length - itemsVisible;
-            
+
             if (index > maxIndex) {
                 currentIndex = 0;
             } else if (index < 0) {
@@ -836,7 +967,7 @@
             } else {
                 currentIndex = index;
             }
-            
+
             updateCarousel();
             resetAutoSlide();
         }
@@ -845,7 +976,7 @@
             autoSlideInterval = setInterval(() => {
                 const itemsVisible = getVisibleItems();
                 const maxIndex = cards.length - itemsVisible;
-                
+
                 if (currentIndex >= maxIndex) {
                     currentIndex = 0;
                 } else {
@@ -870,6 +1001,7 @@
         // Inicializar
         createDots();
         startAutoSlide();
+        actualizarCarrito(); // Asegurar inicialización de UI
 
     </script>
 </body>
