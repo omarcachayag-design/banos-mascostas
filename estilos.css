@@ -619,6 +619,7 @@ nav a.active {
 .form-glass {
     padding: 3rem;
     border-radius: var(--radius-lg);
+    overflow: hidden;
 }
 
 .resumen-glass {
@@ -626,8 +627,16 @@ nav a.active {
     border-radius: var(--radius-lg);
 }
 
+.form-fila {
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+}
+
 .form-group {
+    flex: 1;
     margin-bottom: 1.5rem;
+    min-width: 0; /* Evita que el flex item se desborde */
 }
 
 .form-group label {
@@ -640,11 +649,24 @@ nav a.active {
 .form-group input,
 .form-group select {
     width: 100%;
+    display: block;
     padding: 1rem;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-sm);
     color: var(--text-main);
+    font-family: inherit;
+    font-size: 1rem;
+    -webkit-appearance: none; /* Mejor compatibilidad en iOS */
+    appearance: none;
+    box-shadow: none;
+    outline: none;
+}
+
+/* Fix para inputs de fecha y hora en iOS */
+input[type="date"],
+input[type="time"] {
+    min-height: 3.5rem;
 }
 
 .form-group select option {
@@ -1042,8 +1064,13 @@ footer {
     }
 
     .booking-container {
-        grid-template-columns: 1fr 1fr;
-        gap: 0.8rem;
+        grid-template-columns: 1fr; /* Cambiar a una columna antes para evitar estrechez */
+        gap: 1.5rem;
+    }
+
+    .form-fila {
+        flex-direction: column;
+        gap: 0;
     }
 
     .resumen-glass h3 {
@@ -1071,10 +1098,7 @@ footer {
 
 
 @media (max-width: 480px) {
-    .booking-container {
-        grid-template-columns: 1fr;
-        /* Too narrow for side-by-side */
-    }
+    /* Estilos adicionales para pantallas muy pequeñas si es necesario */
 }
 
 /* Utility for button groups (Responsive) */
