@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Naky Spa - Cuidado Premium para Mascotas</title>
     <link rel="stylesheet" href="estilos.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("_NJzonD5TIpAzXzTK");
+        })();
+    </script>
 </head>
 
 <body>
@@ -16,7 +22,15 @@
         <div class="blob blob-2"></div>
     </div>
     <div id="emoji-container"></div>
+    <div id="gallery-modal" class="gallery-modal">
+        <span class="modal-close">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
     <div id="notif-container" class="notif-container"></div>
+    <a href="https://wa.me/573204644455" class="whatsapp-float" target="_blank" title="Chatea con nosotros">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        <span class="wa-tooltip">¿Tienes dudas? ¡Escríbenos!</span>
+    </a>
 
 
     <!-- Header Glass -->
@@ -31,8 +45,11 @@
                 <a href="#inicio" onclick="closeMenu()">Inicio</a>
                 <a href="#proceso" onclick="closeMenu()">Cómo funciona</a>
                 <a href="#servicios" onclick="closeMenu()">Servicios</a>
+                <a href="#equipo" onclick="closeMenu()">Equipo</a>
+                <a href="#regalo" onclick="closeMenu()">Regalos</a>
                 <a href="#precios" onclick="closeMenu()">Precios</a>
                 <a href="#galeria" onclick="closeMenu()">Galería</a>
+                <a href="#faq" onclick="closeMenu()">Preguntas</a>
                 <a href="#testimonios" onclick="closeMenu()">Opiniones</a>
                 <a href="blog.html">Blog</a>
                 <a href="#carrito" class="btn-nav" onclick="closeMenu()">Reservar</a>
@@ -76,6 +93,33 @@
             </div>
         </section>
 
+        <!-- STATS SECTION -->
+        <section id="stats" style="padding: 20px 0;">
+            <div class="container">
+                <div class="stats-grid glass">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="500">0</span>
+                        <span class="stat-label">🐾 Mascotas Felices</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="10">0</span>
+                        <span class="stat-label">🏆 Años de Experiencia</span>
+                    </div>
+                    <div class="stat-item">
+                        <div style="display: flex; align-items: center; justify-content: center;">
+                            <span class="stat-number" data-target="100">0</span>
+                            <span style="font-size: 2.5rem; font-weight: 800; color: var(--secondary);">%</span>
+                        </div>
+                        <span class="stat-label">🧼 Productos Orgánicos</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="5">0</span>
+                        <span class="stat-label">⭐ Estrellas Google</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- DIDACTIC SECTION: HOW IT WORKS -->
         <section id="proceso" class="features">
             <div class="container">
@@ -114,6 +158,34 @@
             </div>
         </section>
 
+        <!-- BEFORE/AFTER SECTION -->
+        <section id="comparacion" style="padding-top: 0;">
+            <div class="container">
+                <div class="seccion-header">
+                    <span class="hero-badge">Transformación</span>
+                    <h2>Resultados Reales</h2>
+                    <p class="hero-descripcion" style="margin: 1rem auto;">Desliza la barra para ver la magia de nuestra peluquería profesional.</p>
+                </div>
+                <div class="before-after-container glass">
+                    <div class="ba-image-wrapper">
+                        <!-- Imagen Después (fondo) -->
+                        <img src="imagenes/peinado.jpeg" alt="Después" class="img-after">
+                        <!-- Imagen Antes (frente, recortada) -->
+                        <div class="img-before-wrapper" id="img-before-wrapper">
+                            <img src="imagenes/desarreglado.jpeg" alt="Antes" class="img-before">
+                        </div>
+                        <!-- Control deslizante -->
+                        <input type="range" min="0" max="100" value="50" class="ba-slider" oninput="updateBA(this)">
+                        <!-- Manija visual -->
+                        <div class="ba-handle" id="ba-handle">
+                            <div class="ba-arrow-left"></div>
+                            <div class="ba-arrow-right"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- SERVICIOS -->
         <section id="servicios">
             <div class="container">
@@ -139,6 +211,80 @@
                     </div>
                 </div>
             </div>
+        </section>
+
+        <!-- QUIZ SECTION -->
+        <section id="quiz" style="background: rgba(124, 77, 255, 0.05); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+            <div class="container">
+                <div class="quiz-box glass">
+                    <div id="quiz-step-1" class="quiz-step active">
+                        <span class="hero-badge">Paso 1/3</span>
+                        <h2>¿Cómo es el pelo de tu mascota?</h2>
+                        <div class="quiz-options">
+                            <button class="quiz-opt-btn" onclick="nextQuizStep(1, 'corto')"><span>🐶</span> Corto</button>
+                            <button class="quiz-opt-btn" onclick="nextQuizStep(1, 'largo')"><span>🐩</span> Largo / Sedoso</button>
+                            <button class="quiz-opt-btn" onclick="nextQuizStep(1, 'crespo')"><span>🧶</span> Crespo / Duro</button>
+                        </div>
+                    </div>
+                    <div id="quiz-step-2" class="quiz-step">
+                        <span class="hero-badge">Paso 2/3</span>
+                        <h2>¿Cuándo fue su último baño?</h2>
+                        <div class="quiz-options">
+                            <button class="quiz-opt-btn" onclick="nextQuizStep(2, 'reciente')">Hace menos de 15 días</button>
+                            <button class="quiz-opt-btn" onclick="nextQuizStep(2, 'mes')">Hace un mes</button>
+                            <button class="quiz-opt-btn" onclick="nextQuizStep(2, 'mucho')">¡Ya ni me acuerdo!</button>
+                        </div>
+                    </div>
+                    <div id="quiz-step-3" class="quiz-step">
+                        <span class="hero-badge">Paso 3/3</span>
+                        <h2>¿Necesita corte de pelo?</h2>
+                        <div class="quiz-options">
+                            <button class="quiz-opt-btn" onclick="finishQuiz('no')">No, solo mantenimiento</button>
+                            <button class="quiz-opt-btn" onclick="finishQuiz('si')">Sí, le urge un nuevo look</button>
+                        </div>
+                    </div>
+                    <div id="quiz-result" class="quiz-step">
+                        <span class="hero-badge">Recomendación</span>
+                        <h2 id="quiz-result-title">El plan ideal es...</h2>
+                        <p id="quiz-result-desc" class="hero-descripcion"></p>
+                        <div class="btn-group" style="margin-top: 2rem;">
+                            <button onclick="scrollToPrices()" class="btn-main">Ver este plan</button>
+                            <button onclick="resetQuiz()" class="btn-outline">Repetir Quiz</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GIFT CARDS SECTION -->
+        <section id="regalo" style="padding: 4rem 0;">
+            <div class="container">
+                <div class="gift-card-box glass">
+                    <div class="gift-card-content">
+                        <span class="hero-badge" style="background: gold; color: #333; border: none;">Especial</span>
+                        <h2>Regala un Día de Spa</h2>
+                        <p>Sorprende a esa mascota especial o a un amigo amante de los animales con un certificado de regalo premium.</p>
+                        <div class="gift-card-visual glass">
+                            <div class="gift-card-header">
+                                <img src="imagenes/logo_transparent.png" alt="Naky Spa" style="height: 40px;">
+                                <span>GIFT CARD</span>
+                            </div>
+                            <div class="gift-card-body">
+                                <p>Válido por un servicio de Spa Completo</p>
+                            </div>
+                            <div class="gift-card-footer">
+                                <span>#NAKYGIFT2024</span>
+                                <span class="gift-amount">PREMIUM</span>
+                            </div>
+                        </div>
+                        <a href="https://wa.me/573204644455?text=Hola! Me gustaría comprar una tarjeta de regalo de Naky Spa" target="_blank" class="btn-main" style="margin-top: 2rem; display: inline-flex; align-items: center; gap: 10px;">
+                            <span>🎁 Comprar Tarjeta de Regalo</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         </section>
 
         <!-- PRECIOS -->
@@ -253,7 +399,7 @@
                         </div>
                         <div class="form-fila">
                             <div class="form-group">
-                                <label>🐾 Tipo de Mascota</label>
+                                <label>🐾 Especie</label>
                                 <div class="custom-select-wrapper" id="wrapper-tipoMascota">
                                     <div class="select-trigger" onclick="toggleCustomSelect('tipoMascota')">
                                         Selecciona...</div>
@@ -273,7 +419,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label>🧬 Especie</label>
+                                <label>🧬 Raza</label>
                                 <div class="autocomplete-wrapper">
                                     <input type="text" id="razaMascota" placeholder="Ej: Poodle..."
                                         oninput="filtrarRazas()" onfocus="mostrarRazas()">
@@ -395,6 +541,48 @@
             </div>
         </section>
 
+        <!-- INSTAGRAM FEED -->
+        <section id="instagram" style="padding-top: 0;">
+            <div class="container">
+                <div class="seccion-header">
+                    <span class="hero-badge">Social</span>
+                    <h2>Síguenos en Instagram</h2>
+                    <p class="hero-descripcion" style="margin: 1rem auto;">Mira el día a día en Naky Spa y no te pierdas nuestras promociones.</p>
+                </div>
+                <div class="instagram-grid">
+                    <a href="https://instagram.com" target="_blank" class="instagram-item glass">
+                        <img src="imagenes/ig1.png" alt="Instagram Post">
+                        <div class="instagram-overlay"><span class="ig-icon">❤️</span></div>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="instagram-item glass">
+                        <img src="imagenes/ig2.png" alt="Instagram Post">
+                        <div class="instagram-overlay"><span class="ig-icon">❤️</span></div>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="instagram-item glass">
+                        <img src="imagenes/ig3.png" alt="Instagram Post">
+                        <div class="instagram-overlay"><span class="ig-icon">❤️</span></div>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="instagram-item glass">
+                        <img src="imagenes/corte1.jpeg" alt="Instagram Post">
+                        <div class="instagram-overlay"><span class="ig-icon">❤️</span></div>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="instagram-item glass">
+                        <img src="imagenes/corte2.jpeg" alt="Instagram Post">
+                        <div class="instagram-overlay"><span class="ig-icon">❤️</span></div>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="instagram-item glass">
+                        <img src="imagenes/corte5.jpeg" alt="Instagram Post">
+                        <div class="instagram-overlay"><span class="ig-icon">❤️</span></div>
+                    </a>
+                </div>
+                <div style="text-align: center; margin-top: 3rem;">
+                    <a href="https://instagram.com" target="_blank" class="btn-outline" style="display: inline-flex; align-items: center; gap: 10px;">
+                        <span>📸 Seguir a @NakySpa</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
         <!-- TESTIMONIOS -->
         <section id="testimonios">
             <div class="container">
@@ -510,6 +698,143 @@
                 <div class="carousel-dots" id="carousel-dots"></div>
             </div>
         </section>
+        <!-- TEAM SECTION -->
+        <section id="equipo">
+            <div class="container">
+                <div class="seccion-header">
+                    <span class="hero-badge">Expertos</span>
+                    <h2>Nuestro Equipo</h2>
+                    <p class="hero-descripcion" style="margin: 1rem auto;">Profesionales apasionados por el bienestar de tu mascota.</p>
+                </div>
+                <div class="team-grid">
+                    <div class="team-card glass glass-hover">
+                        <div class="team-img-wrapper">
+                            <img src="imagenes/valentina.png" alt="Valentina" class="team-img">
+                        </div>
+                        <h3>Valentina</h3>
+                        <span class="team-role">Estilista Senior</span>
+                        <p>Experta en cortes de raza y acabados premium con más de 5 años de experiencia.</p>
+                    </div>
+                    <div class="team-card glass glass-hover">
+                        <div class="team-img-wrapper">
+                            <img src="imagenes/carlos.png" alt="Carlos" class="team-img">
+                        </div>
+                        <h3>Carlos</h3>
+                        <span class="team-role">Especialista en Cuidados</span>
+                        <p>Experto en comportamiento canino y manejo de pieles sensibles con baños medicados.</p>
+                    </div>
+                    <div class="team-card glass glass-hover">
+                        <div class="team-img-wrapper">
+                            <img src="imagenes/andrea.png" alt="Andrea" class="team-img">
+                        </div>
+                        <h3>Andrea</h3>
+                        <span class="team-role">Auxiliar de Spa</span>
+                        <p>Encargada de brindar mimos y asegurar que cada mascota se sienta en casa durante su estadía.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section id="faq">
+            <div class="container">
+                <div class="seccion-header">
+                    <span class="hero-badge">Dudas</span>
+                    <h2>Preguntas Frecuentes</h2>
+                </div>
+                <div class="faq-container">
+                    <div class="faq-item glass">
+                        <div class="faq-question">
+                            <h3>¿Cuánto tiempo dura el servicio de spa?</h3>
+                            <span class="faq-icon">⊕</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>El tiempo varía según el tamaño y el estado del pelaje de tu mascota. Generalmente, un baño básico toma entre 60 y 90 minutos, mientras que un servicio completo con corte puede tardar de 2 a 3 horas.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item glass">
+                        <div class="faq-question">
+                            <h3>¿Qué productos utilizan para el baño?</h3>
+                            <span class="faq-icon">⊕</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Utilizamos exclusivamente productos premium dermatológicamente testeados y adaptados al pH de perros y gatos. Si tu mascota tiene alguna condición especial, también contamos con shampoo medicado e hidratante.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item glass">
+                        <div class="faq-question">
+                            <h3>¿Aceptan mascotas agresivas o muy nerviosas?</h3>
+                            <span class="faq-icon">⊕</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>¡Sí! Tenemos experiencia manejando mascotas nerviosas mediante técnicas de refuerzo positivo y un ambiente tranquilo. En caso de agresividad extrema, evaluamos cada situación para garantizar la seguridad de la mascota y nuestro personal.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item glass">
+                        <div class="faq-question">
+                            <h3>¿Es necesario pedir cita previa?</h3>
+                            <span class="faq-icon">⊕</span>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Recomendamos siempre agendar con anticipación para asegurar el espacio y brindarle a tu mascota la atención personalizada que merece. Puedes hacerlo fácilmente a través de nuestro formulario web o WhatsApp.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- BRANDS SECTION -->
+        <section id="marcas" style="padding: 2rem 0; background: rgba(255, 255, 255, 0.02); border-top: 1px solid var(--glass-border); border-bottom: 1px solid var(--glass-border);">
+            <div class="container">
+                <div class="seccion-header" style="margin-bottom: 1rem;">
+                    <p class="hero-descripcion" style="margin: 0 auto; text-transform: uppercase; letter-spacing: 2px; font-size: 0.9rem;">Marcas Premium que confían en nosotros</p>
+                </div>
+                <div class="brands-carousel">
+                    <!-- Text placeholders for brands instead of images to avoid loading issues -->
+                    <div class="brand-item">🐾 Royal Canin</div>
+                    <div class="brand-item">✨ ProPlan</div>
+                    <div class="brand-item">🛁 Hydra</div>
+                    <div class="brand-item">🌿 TropiClean</div>
+                    <div class="brand-item">✂️ Wahl</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NEWSLETTER SECTION -->
+        <section id="newsletter">
+            <div class="container">
+                <div class="newsletter-box glass">
+                    <div class="newsletter-content">
+                        <h2>Únete al Club Naky Spa</h2>
+                        <p>Recibe tips exclusivos de cuidado, promociones sorpresa y recordatorios para el spa de tu mascota.</p>
+                        <form id="newsletter-form" class="newsletter-form" action="https://formspree.io/f/mwvyqkkd" method="POST">
+                            <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                            <button type="submit" class="btn-main" id="newsletter-submit">Suscribirme</button>
+                        </form>
+                        <div id="newsletter-status" style="margin-top: 1rem; font-weight: 600; display: none;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </section>
+
+        <!-- MAP SECTION -->
+        <section id="ubicacion" style="padding-bottom: 0;">
+            <div class="container">
+                <div class="seccion-header">
+                    <span class="hero-badge">Ubicación</span>
+                    <h2>Visítanos en Neiva</h2>
+                </div>
+                <div class="map-container glass">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15947.6644485542!2d-75.28189!3d2.9273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3b746369c9b451%3A0x2f4b464455!2sNeiva%2C%20Huila!5e0!3m2!1ses!2sco!4v1715000000000!5m2!1ses!2sco" 
+                        width="100%" height="450" style="border:0; border-radius: var(--radius-lg);" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
     </main>
 
     <footer class="glass">
@@ -754,8 +1079,8 @@
             const resumenMascota = document.getElementById("resumen-mascota");
 
             let textoMascota = [];
-            if (tipo) textoMascota.push(`Mascota: ${tipo}`);
-            if (raza) textoMascota.push(`Especie: ${raza}`);
+            if (tipo) textoMascota.push(`Especie: ${tipo}`);
+            if (raza) textoMascota.push(`Raza: ${raza}`);
             if (tamano) textoMascota.push(`Tamaño: ${tamano}`);
             if (nervioso) textoMascota.push(`Nervioso: ${nervioso}`);
 
@@ -1005,6 +1330,175 @@
             createDots();
             currentIndex = 0;
             updateCarousel();
+        });
+
+        // --- GALLERY LIGHTBOX ---
+        const modal = document.getElementById("gallery-modal");
+        const modalImg = document.getElementById("modal-img");
+        const closeBtn = document.getElementsByClassName("modal-close")[0];
+
+        document.querySelectorAll('.galeria-item img').forEach(img => {
+            img.onclick = function() {
+                modal.style.display = "block";
+                modalImg.src = this.src;
+            }
+        });
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // --- QUIZ LOGIC ---
+        let quizAnswers = {};
+
+        function nextQuizStep(step, value) {
+            quizAnswers[step] = value;
+            document.getElementById(`quiz-step-${step}`).classList.remove('active');
+            document.getElementById(`quiz-step-${step + 1}`).classList.add('active');
+        }
+
+        function finishQuiz(needsCut) {
+            quizAnswers[3] = needsCut;
+            document.getElementById('quiz-step-3').classList.remove('active');
+            document.getElementById('quiz-result').classList.add('active');
+
+            const title = document.getElementById('quiz-result-title');
+            const desc = document.getElementById('quiz-result-desc');
+
+            if (needsCut === 'si') {
+                title.innerText = "¡El plan 'Baño + Corte' es ideal!";
+                desc.innerText = "Tu mascota necesita renovar su estilo. Este plan incluye todo lo necesario para que luzca increíble y se sienta fresca.";
+            } else if (quizAnswers[1] === 'crespo' || quizAnswers[2] === 'mucho') {
+                title.innerText = "¡Recomendamos 'Baño Medicado'!";
+                desc.innerText = "Por el tipo de pelo o el tiempo transcurrido, un cuidado profundo de la piel es lo mejor para prevenir irritaciones.";
+            } else {
+                title.innerText = "¡El plan 'Baño Básico' es perfecto!";
+                desc.innerText = "Para un mantenimiento rápido y profesional, este plan mantendrá a tu mascota limpia y con un aroma delicioso.";
+            }
+        }
+
+        function resetQuiz() {
+            quizAnswers = {};
+            document.querySelectorAll('.quiz-step').forEach(s => s.classList.remove('active'));
+            document.getElementById('quiz-step-1').classList.add('active');
+        }
+
+        function scrollToPrices() {
+            document.getElementById('precios').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- FAQ LOGIC ---
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentElement;
+                const isActive = item.classList.contains('active');
+                
+                // Cerrar otros abiertos
+                document.querySelectorAll('.faq-item').forEach(otherItem => {
+                    otherItem.classList.remove('active');
+                });
+
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // --- BEFORE/AFTER SLIDER LOGIC ---
+        function updateBA(slider) {
+            const wrapper = document.getElementById('img-before-wrapper');
+            const handle = document.getElementById('ba-handle');
+            const val = slider.value;
+            wrapper.style.width = val + '%';
+            handle.style.left = val + '%';
+        }
+
+        // --- STATS COUNTER LOGIC ---
+        const statsSection = document.getElementById('stats');
+        const statNumbers = document.querySelectorAll('.stat-number');
+        let statsAnimated = false;
+
+        function animateStats() {
+            statNumbers.forEach(stat => {
+                const target = +stat.getAttribute('data-target');
+                const duration = 2000; // 2 seconds
+                const increment = target / (duration / 16); // 60fps
+                
+                let current = 0;
+                const updateCounter = () => {
+                    current += increment;
+                    if (current < target) {
+                        stat.innerText = Math.ceil(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        stat.innerText = target;
+                    }
+                };
+                updateCounter();
+            });
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!statsAnimated && statsSection) {
+                const sectionTop = statsSection.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                if (sectionTop < windowHeight * 0.8) {
+                    animateStats();
+                    statsAnimated = true;
+                }
+            }
+        });
+
+        // --- NEWSLETTER FORM AJAX ---
+        const newsletterForm = document.getElementById('newsletter-form');
+        const newsletterStatus = document.getElementById('newsletter-status');
+        const newsletterSubmit = document.getElementById('newsletter-submit');
+
+        newsletterForm.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            
+            const data = new FormData(event.target);
+            newsletterSubmit.disabled = true;
+            newsletterSubmit.innerText = 'Enviando...';
+            
+            try {
+                const response = await fetch(event.target.action, {
+                    method: newsletterForm.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Enviar correo de bienvenida vía EmailJS
+                    emailjs.send("service_mnbx5sc", "template_4pt08ol", {
+                        email: data.get('email'),
+                    });
+
+                    newsletterStatus.style.display = 'block';
+                    newsletterStatus.style.color = '#4ade80'; // Verde éxito
+                    newsletterStatus.innerText = '¡Bienvenido al Club! Revisa tu correo pronto.';
+                    newsletterForm.reset();
+                    newsletterSubmit.innerText = '¡Suscrito!';
+                    mostrarNotificacion('¡Suscripción exitosa!');
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.errors ? errorData.errors.map(e => e.message).join(', ') : 'Error al enviar');
+                }
+            } catch (error) {
+                newsletterStatus.style.display = 'block';
+                newsletterStatus.style.color = '#f87171'; // Rojo error
+                newsletterStatus.innerText = 'Ups, hubo un problema. Intenta de nuevo.';
+                newsletterSubmit.disabled = false;
+                newsletterSubmit.innerText = 'Suscribirme';
+            }
         });
 
         // Inicializar
