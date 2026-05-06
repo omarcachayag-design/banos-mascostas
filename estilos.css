@@ -293,10 +293,10 @@ header {
     top: 20px;
     left: 50%;
     transform: translateX(-50%);
-    width: 90%;
-    max-width: 1200px;
+    width: 95%; /* Aumentado de 90% */
+    max-width: 1500px; /* Aumentado de 1200px */
     z-index: 1000;
-    padding: 1rem 2rem;
+    padding: 1rem 1.5rem; /* Ajustado el padding lateral */
     border-radius: var(--radius-full);
     transition: var(--transition);
 }
@@ -319,8 +319,8 @@ header.scrolled {
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
-    font-size: 1.5rem;
+    gap: 0.5rem; /* Reducido de 0.8rem para ganar espacio */
+    font-size: 1.4rem; /* Ligeramente más pequeño el logo-container */
 }
 
 .logo-img {
@@ -349,13 +349,15 @@ header.scrolled {
 
 nav {
     display: flex;
-    gap: 2rem;
+    gap: 1rem; /* Un poco más ajustado */
     align-items: center;
 }
 
 nav a {
-    font-weight: 500;
+    font-weight: 600; /* Un poco más de peso para que resalte */
+    font-size: 0.95rem; /* Aumentado de 0.85rem */
     color: var(--text-muted);
+    white-space: nowrap;
 }
 
 nav a:hover,
