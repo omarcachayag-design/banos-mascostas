@@ -1358,6 +1358,7 @@ footer {
     line-height: 1.2;
     background: linear-gradient(to right, #fff, #ffd700);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -1828,6 +1829,7 @@ footer {
     background: transparent;
     outline: none;
     -webkit-appearance: none;
+    appearance: none;
     margin: 0;
     z-index: 20;
     cursor: ew-resize;
