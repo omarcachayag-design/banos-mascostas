@@ -1831,13 +1831,23 @@ footer {
     margin: 0;
     z-index: 20;
     cursor: ew-resize;
+    touch-action: none; /* Evita que la página se mueva mientras deslizas el dedo */
 }
 
 .ba-slider::-webkit-slider-thumb {
     -webkit-appearance: none;
-    width: 0; /* Hidden but clickable area */
+    width: 40px; /* Aumentamos el ancho táctil del control invisible */
     height: 100%;
     cursor: ew-resize;
+    background: transparent;
+}
+
+.ba-slider::-moz-range-thumb {
+    width: 40px;
+    height: 100%;
+    cursor: ew-resize;
+    background: transparent;
+    border: none;
 }
 
 .ba-handle {
@@ -1845,8 +1855,8 @@ footer {
     top: 50%;
     left: 50%; /* Initial position */
     transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
+    width: 45px; /* Ligeramente más grande para móviles */
+    height: 45px;
     background: var(--primary);
     border: 3px solid var(--white);
     border-radius: 50%;
@@ -1854,7 +1864,7 @@ footer {
     align-items: center;
     justify-content: center;
     z-index: 10;
-    pointer-events: none;
+    pointer-events: none; /* Esto permite que el toque llegue al input de abajo */
     box-shadow: 0 0 15px rgba(0,0,0,0.5);
 }
 
